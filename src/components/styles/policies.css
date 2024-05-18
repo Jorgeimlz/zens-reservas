@@ -1,0 +1,43 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3%;
+    padding: 0 10px; /* Añade un padding horizontal para evitar que el texto toque los bordes */
+}
+
+.policies {
+    width: 100%; /* Asegura que el contenedor use todo el ancho disponible */
+    max-width: 800px; /* Establece un ancho máximo para mantener la legibilidad */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title h2 {
+    font-size: 150px; /* Tamaño de fuente grande para destacar */
+    margin: 10px 0 50px 0; /* Aumenta el margen inferior para separar del contenido */
+    font-family: "Barlow", sans-serif;
+}
+
+.title p {
+    margin-bottom: 20px; /* Espacio antes de las normas */
+    font-size: 16px;
+}
+
+.normas ul {
+    width: 100%; /* Asegura que la lista utilice todo el ancho */
+    padding: 0;
+    columns: 2;
+    column-gap: 40px; /* Incrementa el espacio entre columnas si es necesario */
+}
+
+.normas li {
+    margin-bottom: 15px; /* Espacio entre ítems aumentado para mejor separación */
+    text-align: left; /* Asegura la alineación a la izquierda */
+    font-size: 18px; /* Ajusta el tamaño de fuente para una mejor legibilidad */
+    hyphens: auto; /* Permite la división de palabras en sílabas al final de la línea */
+    line-height: 1.5; /* Mejora la legibilidad con un mayor interlineado */
+    font-family: "Freeman", sans-serif;
+    font-style: normal;
+}

@@ -1,0 +1,28 @@
+/* src/components/styles/Register.css */
+.register-page {
+    text-align: center;
+    padding: 50px;
+  }
+  
+  .register-page h2 {
+    font-size: 48px;
+  }
+  
+  .register-page form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .register-page input {
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .register-page button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
