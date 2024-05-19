@@ -6,11 +6,14 @@ import './styles/Login.css';
 const Login = () => (
   <Layout>
     <div className="login-page">
-      <h2>Iniciar Sesión</h2>
+      <h2>RESERVAR</h2>
       <form>
-        <input type="text" placeholder="Usuario" />
-        <input type="password" placeholder="Contraseña" />
-        <button type="submit">Iniciar Sesión</button>
+        <input type="text" placeholder="Nombre"/>
+        <input type="text" placeholder="Apellido"/>
+        <input type="number" placeholder="Numero Personas"/>
+        <input type="text" placeholder="Numero celular" />
+        <input type="text" placeholder="Hora"/>
+        <button type="submit">reservar</button>
       </form>
     </div>
   </Layout>
