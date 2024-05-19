@@ -1,4 +1,10 @@
 /* Estilos base para la página de reservas y contenedores de flyers */
+.no-style-link {
+  text-decoration: none;
+  color: inherit; /* O especifica el color que prefieras */
+  /* color: black; */
+}
+
 .reservas-page {
   display: flex;
   flex-direction: column;

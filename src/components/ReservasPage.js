@@ -7,7 +7,8 @@ const ReservasPage = () => (
   <Layout>
     <div className="reservas-page">
       <div className="flyers-container">
-        <div className="flyer">
+        <a href="/login" class="no-style-link">
+          <div className="flyer">
           <div className="flyer-date">
             <span className="day">THU</span>
             <span className="date">16</span>
@@ -18,7 +19,9 @@ const ReservasPage = () => (
             <p>Free shots when the bell rings</p>
           </div>
         </div>
-        <div className="flyer">
+        </a>
+        <a href="/login" class="no-style-link" >
+          <div className="flyer">
           <div className="flyer-date">
             <span className="day">FRI</span>
             <span className="date">17</span>
@@ -29,7 +32,9 @@ const ReservasPage = () => (
             <p>USFQ no cover till 21:30</p>
           </div>
         </div>
-        <div className="flyer">
+        </a>
+        <a href="/login" class="no-style-link">
+          <div className="flyer">
           <div className="flyer-date">
             <span className="day">SAT</span>
             <span className="date">18</span>
@@ -40,6 +45,8 @@ const ReservasPage = () => (
             <p>Cover Free: Only guest List</p>
           </div>
         </div>
+        </a>
+        
       </div>
     </div>
   </Layout>
