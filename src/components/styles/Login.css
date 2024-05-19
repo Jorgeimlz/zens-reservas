@@ -1,28 +1,42 @@
 /* src/components/styles/Login.css */
 .login-page {
-    text-align: center;
-    padding: 50px;
-  }
-  
-  .login-page h2 {
-    font-size: 48px;
-  }
-  
-  .login-page form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .login-page input {
-    margin: 10px 0;
-    padding: 10px;
-    font-size: 16px;
-  }
-  
-  .login-page button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
+  margin-top: 4%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 20px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.column p {
+  margin: 10px 0 5px;
+}
+
+.column input,
+.column select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+button {
+  grid-column: span 2;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}

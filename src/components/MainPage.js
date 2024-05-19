@@ -23,12 +23,6 @@ const MainPage = () => (
             <Link to="/policies">Políticas</Link>
           </li>
           <li>
-            <Link to="/login">Iniciar sesión</Link>
-          </li>
-          <li>
-            <Link to="/register">Registrarse</Link>
-          </li>
-          <li>
             <Link to="/gallery">Galería</Link>
           </li>
           <li>
@@ -59,3 +53,4 @@ const MainPage = () => (
 );
 
 export default MainPage;
+

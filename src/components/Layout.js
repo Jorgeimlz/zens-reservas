@@ -14,8 +14,6 @@ const Layout = ({ children }) => (
         <ul className="navbar-links">
           <li><a href="/about">Sobre nosotros</a></li>
           <li><a href="/policies">Políticas</a></li>
-          <li><a href="/login">Iniciar sesión</a></li>
-          <li><a href="/register">Registrarse</a></li>
           <li><a href="/gallery">Galería</a></li>
           <li><a href="/contact">Contacto</a></li>
         </ul>
