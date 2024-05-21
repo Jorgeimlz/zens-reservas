@@ -1,4 +1,3 @@
-// src/components/MainPage.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles/MainPage.css';
@@ -6,7 +5,7 @@ import './styles/MainPage.css';
 const MainPage = () => (
   <div className="main-page">
     <video autoPlay loop muted className='background-video'>
-        <source src = "/zenspro.mp4" type = "video/mp4"/>
+      <source src="/zenspro.mp4" type="video/mp4" />
     </video>
     <nav className="navbar-invisible">
       <div className="logo-container">

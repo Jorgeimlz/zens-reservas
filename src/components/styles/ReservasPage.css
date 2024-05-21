@@ -1,5 +1,4 @@
-/* Estilos base para la página de reservas y contenedores de flyers */
-.no-style-link {
+/.no-style-link {
   text-decoration: none;
   color: inherit; /* O especifica el color que prefieras */
   /* color: black; */
@@ -77,4 +76,72 @@
 .flyer-info p {
   margin-top: 0;
   font-size: 0.9rem; /* Reduce el tamaño de fuente */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .flyers-container {
+    width: 90%; /* Ajusta el ancho para pantallas más pequeñas */
+  }
+
+  .flyer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .flyer-date {
+    margin-right: 0;
+    margin-bottom: 10px; /* Añade un margen inferior para separar del texto */
+    font-size: 1rem; /* Ajusta el tamaño de fuente */
+  }
+
+  .flyer-date .day {
+    font-size: 0.9rem; /* Ajusta el tamaño de fuente */
+  }
+
+  .flyer-date .date {
+    font-size: 1.2rem; /* Ajusta el tamaño de fuente */
+  }
+
+  .flyer-info h3 {
+    font-size: 1rem; /* Ajusta el tamaño de fuente */
+  }
+
+  .flyer-info p {
+    font-size: 0.8rem; /* Ajusta el tamaño de fuente */
+  }
+}
+
+@media (max-width: 480px) {
+  .flyers-container {
+    width: 100%; /* Ajusta el ancho para pantallas muy pequeñas */
+  }
+
+  .flyer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+  }
+
+  .flyer-date {
+    margin-bottom: 10px; /* Añade un margen inferior para separar del texto */
+    font-size: 0.9rem; /* Ajusta el tamaño de fuente */
+  }
+
+  .flyer-date .day {
+    font-size: 0.8rem; /* Ajusta el tamaño de fuente */
+  }
+
+  .flyer-date .date {
+    font-size: 1rem; /* Ajusta el tamaño de fuente */
+  }
+
+  .flyer-info h3 {
+    font-size: 0.9rem; /* Ajusta el tamaño de fuente */
+  }
+
+  .flyer-info p {
+    font-size: 0.7rem; /* Ajusta el tamaño de fuente */
+  }
 }
