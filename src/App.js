@@ -9,6 +9,7 @@ import Register from './components/Register';
 import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 import LoginAdmin from './components/LoginAdmin';
+import AdminPage from './components/AdminPage';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/gallery" exact component={Gallery} />
           <Route path="/contact" exact component={Contact} />
           <Route path="/LoginAdmin" exact component={LoginAdmin} />
+          <Route path="/AdminPage" exact component={AdminPage} />
         </Switch>
       </div>
     </Router>
