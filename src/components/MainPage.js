@@ -27,6 +27,9 @@ const MainPage = () => (
           <li>
             <Link to="/contact">Contacto</Link>
           </li>
+          <li className='admin'>
+            <Link to="/LoginAdmin">Soy admin</Link>
+          </li>
         </ul>
       </div>
     </nav>
@@ -52,4 +55,3 @@ const MainPage = () => (
 );
 
 export default MainPage;
-

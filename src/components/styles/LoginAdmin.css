@@ -1,0 +1,90 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7); /* Púrpura oscuro transparente */
+    padding: 40px;
+    border: 2px rgba(86, 0, 86, 0.598);
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(86, 0, 86, 0.598);
+    width: 90%;
+    max-width: 400px;
+    box-sizing: border-box;
+  }
+  
+  .form h4 {
+    color: white;
+    margin-bottom: 10px;
+  }
+  
+  .form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .ingresar-button {
+    border: 2px solid purple;
+    background-color: transparent;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+  }
+  
+  .ingresar-button:hover {
+    background-color: purple;
+    color: white;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    .form {
+      padding: 30px;
+    }
+  
+    .form h4 {
+      font-size: 16px;
+    }
+  
+    .form input {
+      padding: 8px;
+      font-size: 14px;
+    }
+  
+    .ingresar-button {
+      font-size: 16px;
+      padding: 8px 16px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .form {
+      padding: 20px;
+    }
+  
+    .form h4 {
+      font-size: 14px;
+    }
+  
+    .form input {
+      padding: 6px;
+      font-size: 12px;
+    }
+  
+    .ingresar-button {
+      font-size: 14px;
+      padding: 6px 12px;
+    }
+  }
+  

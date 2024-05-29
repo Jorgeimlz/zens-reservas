@@ -8,6 +8,8 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Gallery from './components/Gallery';
 import Contact from './components/Contact';
+import LoginAdmin from './components/LoginAdmin';
+
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
           <Route path="/register" exact component={Register} />
           <Route path="/gallery" exact component={Gallery} />
           <Route path="/contact" exact component={Contact} />
+          <Route path="/LoginAdmin" exact component={LoginAdmin} />
         </Switch>
       </div>
     </Router>
