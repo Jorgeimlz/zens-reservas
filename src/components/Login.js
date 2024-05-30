@@ -38,7 +38,7 @@ const Login = () => (
             </select>
           </div>
         </div>
-        <button type="submit" >Reservar</button>
+        <button type="submit" className='reservar-button'>Reservar</button>
       </form>
     </div>
   </Layout>
