@@ -10,6 +10,7 @@ import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 import LoginAdmin from './components/LoginAdmin';
 import AdminPage from './components/AdminPage';
+import VerReservas from './components/verReservas';
 
 
 function App() {
@@ -27,6 +28,8 @@ function App() {
           <Route path="/contact" exact component={Contact} />
           <Route path="/LoginAdmin" exact component={LoginAdmin} />
           <Route path="/AdminPage" exact component={AdminPage} />
+          <Route path="/verReservas" exact component={VerReservas} />
+
         </Switch>
       </div>
     </Router>
