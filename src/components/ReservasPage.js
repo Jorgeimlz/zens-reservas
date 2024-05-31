@@ -1,53 +1,52 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from './Layout';
 import './styles/ReservasPage.css';
 
-const ReservasPage = () => (
-  <Layout>
-    <div className="reservas-page">
-      <div className="flyers-container">
-        <a href="/login" className="no-style-link">
-          <div className="flyer">
-            <div className="flyer-date">
-              <span className="day">THU</span>
-              <span className="date">16</span>
-            </div>
-            <div className="flyer-info">
-              <h3>Znights</h3>
-              <p>Are better with friends</p>
-              <p>Free shots when the bell rings</p>
-            </div>
-          </div>
-        </a>
-        <a href="/login" className="no-style-link">
-          <div className="flyer">
-            <div className="flyer-date">
-              <span className="day">FRI</span>
-              <span className="date">17</span>
-            </div>
-            <div className="flyer-info">
-              <h3>Cumbayá Grand Prix</h3>
-              <p>End of semester official USFQ party</p>
-              <p>USFQ no cover till 21:30</p>
-            </div>
-          </div>
-        </a>
-        <a href="/login" className="no-style-link">
-          <div className="flyer">
-            <div className="flyer-date">
-              <span className="day">SAT</span>
-              <span className="date">18</span>
-            </div>
-            <div className="flyer-info">
-              <h3>Future nostalgia sunset</h3>
-              <p>80's vibes</p>
-              <p>Cover Free: Only guest List</p>
-            </div>
-          </div>
-        </a>
+const ReservasPage = () => {
+  const [ultimasTresFiestas, setUltimasTresFiestas] = useState([]);
+
+  useEffect(() => {
+    const consultaApi = async () => {
+      try {
+        const url = '/api/Fiestas'; // URL relativa
+        const respuesta = await fetch(url);
+        if (!respuesta.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const resultado = await respuesta.json();
+        // Seleccionar solo las últimas tres fiestas
+        const ultimasTres = resultado.slice(-3);
+        setUltimasTresFiestas(ultimasTres); // Almacenar las últimas tres fiestas en el estado
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    consultaApi();
+  }, []); // Ejecutar solo una vez al montar el componente
+
+  return (
+    <Layout>
+      <div className="reservas-page">
+        <div className="flyers-container">
+          {ultimasTresFiestas.map((fiesta) => (
+            <a href="/login" className="no-style-link" key={fiesta.idFiesta}>
+              <div className="flyer">
+                <div className="flyer-date">
+                  <span className="day">{fiesta.dia}</span>
+                  <span className="date">{fiesta.fecha}</span>
+                </div>
+                <div className="flyer-info">
+                  <h3>{fiesta.nombreFiesta}</h3>
+                  <p>{fiesta.descripcion}</p>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
       </div>
-    </div>
-  </Layout>
-);
+    </Layout>
+  );
+};
 
 export default ReservasPage;

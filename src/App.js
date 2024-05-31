@@ -1,3 +1,4 @@
+// App.js
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import MainPage from './components/MainPage';
@@ -28,7 +29,7 @@ function App() {
           <Route path="/contact" exact component={Contact} />
           <Route path="/LoginAdmin" exact component={LoginAdmin} />
           <PrivateRoute path="/AdminPage" exact component={AdminPage} />
-          <Route path="/verReservas" exact component={VerReservas} />
+          <PrivateRoute path="/verReservas" exact component={VerReservas} />
         </Switch>
       </div>
     </Router>
@@ -36,3 +37,4 @@ function App() {
 }
 
 export default App;
+

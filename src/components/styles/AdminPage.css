@@ -9,6 +9,24 @@
   background-position: center; /* Centrar la imagen */
   text-align: center;
 }
+.reserbutton {
+  border: 2px solid #0056b3;
+  background-color: transparent;
+  color: white;
+  font-size: 18px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+.reserbutton:hover {
+  background-color: #677b91;
+  color: white;
+}
 
 .adminPage h1 {
   margin-bottom: 20px;
