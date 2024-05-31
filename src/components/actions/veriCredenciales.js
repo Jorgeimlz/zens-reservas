@@ -3,7 +3,10 @@ export function ingresar(history) {
   var pswd = document.getElementById("pswd").value;
   if (nombre === "zensAdmin" && pswd === "admin") {
     alert('Ingreso exitoso');
-    history.push('/AdminPage');
+    history.push({
+      pathname: '/AdminPage',
+      state: { logged: true }
+    });
   } else {
     alert('Verifique sus credenciales');
   }

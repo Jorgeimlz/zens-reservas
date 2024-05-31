@@ -11,7 +11,7 @@ import Contact from './components/Contact';
 import LoginAdmin from './components/LoginAdmin';
 import AdminPage from './components/AdminPage';
 import VerReservas from './components/verReservas';
-
+import { PrivateRoute } from './components/PrivaterRoute';
 
 function App() {
   return (
@@ -27,9 +27,8 @@ function App() {
           <Route path="/gallery" exact component={Gallery} />
           <Route path="/contact" exact component={Contact} />
           <Route path="/LoginAdmin" exact component={LoginAdmin} />
-          <Route path="/AdminPage" exact component={AdminPage} />
+          <PrivateRoute path="/AdminPage" exact component={AdminPage} />
           <Route path="/verReservas" exact component={VerReservas} />
-
         </Switch>
       </div>
     </Router>
