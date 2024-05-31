@@ -1,9 +1,24 @@
+/* Fijar la imagen de fondo para que cubra toda la pantalla */
+.background {
+    background-image: url("../../../public/reservasWPP.png");
+    background-size: cover; /* Cubrir todo el contenedor */
+    background-position: center; /* Centrar la imagen */
+    background-attachment: fixed; /* Fijar la imagen */
+    height: 100vh; /* Asegurar que cubra toda la altura de la pantalla */
+    width: 100vw; /* Asegurar que cubra toda la anchura de la pantalla */
+    overflow: hidden; /* Evitar el desplazamiento */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .mainPage {
-    margin-top: 10%;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: #ffffff; /* Color de texto blanco */
+    width: 100%; /* Asegurar que el contenedor principal ocupa todo el ancho */
+    height: 100%; /* Asegurar que el contenedor principal ocupa toda la altura */
 }
 
 h1, button {
@@ -29,9 +44,16 @@ h1, button {
 
 .columnas {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 5%;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-top: 3%;
+    width: 100%; /* Asegurar que las columnas ocupen todo el ancho */
+}
+
+.columna {
+    margin: 0 1%; /* Espaciado entre columnas */
+    flex: 1;
+    max-width: 30%; /* Asegurar que cada columna no exceda el 30% del ancho */
 }
 
 ul {
@@ -54,9 +76,7 @@ h3 {
         align-items: center;
     }
 
-    .columna1,
-    .columna2,
-    .columna3 {
+    .columna {
         margin: 0;
         width: 100%; /* Ocupa todo el ancho en dispositivos móviles */
         max-width: none;
