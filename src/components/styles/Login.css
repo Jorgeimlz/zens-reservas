@@ -1,20 +1,20 @@
 /* src/components/styles/Login.css */
 .login-page {
-  margin-top: 6%; /* Reducir el margen superior */
+  margin-top: 6%;
   text-align: center;
-  margin-bottom: 2px; /* Reducir el margen inferior */
+  margin-bottom: 2px;
 }
 
 .reservar-button {
-  border: 1px solid purple; /* Reducir el grosor del borde */
+  border: 1px solid purple;
   background-color: transparent;
   color: white;
-  font-size: 3px; /* Reducir el tamaño de la fuente */
-  padding: 1px 2px; /* Reducir el relleno */
+  font-size: 3px;
+  padding: 1px 2px;
   cursor: pointer;
   transition: all 0.3s ease;
-  border-radius: 3px; /* Reducir el radio del borde */
-  margin-top: 2px; /* Reducir el margen superior */
+  border-radius: 3px;
+  margin-top: 2px;
 }
 
 .reservar-button:hover {
@@ -22,44 +22,65 @@
   color: white;
 }
 
-.form {
+.genReserva {
   display: flex;
   justify-content: center;
+  align-items: center;  /* Alinea verticalmente al centro */
+  padding: 20px; /* Añadir padding para evitar solapamientos */
 }
 
-form {
+.genReserva form {
   width: 80%; /* Ancho del formulario */
-  margin-top: 10px; /* Añadir espacio superior */
   display: grid;
   grid-template-rows: auto auto;
   gap: 2px; /* Reducir el espacio entre filas */
 }
 
-.form-grid {
+.genReserva-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2px; /* Reducir el espacio entre columnas */
+  gap: 10px; /* Reducir el espacio entre columnas */
 }
 
 .column p {
-  margin: 1px 0 0; /* Reducir el espacio entre párrafos */
+  margin: 5px 0 0; /* Reducir el espacio entre párrafos */
 }
 
 .column input,
 .column select {
   width: 100%;
-  padding: 0; /* Eliminar el relleno */
-  margin-bottom: 1px; /* Reducir el margen inferior */
+  padding: 2px;
+  margin-bottom: 2px;
   box-sizing: border-box;
+  background-color: #000000; /* Fondo oscuro para los inputs */
+  border: 1px solid #4d0b59; 
+  border-radius: 5px;
+  color: white; /* Color del texto en los inputs y selects */
+}
+
+.column select option {
+  color: white; /* Color del texto en las opciones del select */
+  background-color: #000000; /* Fondo oscuro para las opciones del select */
 }
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
-  form {
+  .genReserva form {
     width: 90%; /* Reducir el ancho del formulario en dispositivos más pequeños */
   }
   
-  .form-grid {
+  .genReserva-grid {
     grid-template-columns: 1fr; /* Mostrar una columna en dispositivos más pequeños */
+  }
+  
+  .genReserva {
+    padding: 10px; /* Ajustar padding para dispositivos más pequeños */
+  }
+}
+
+@media (max-width: 480px) {
+  .genReserva {
+    margin-top: 60px; /* Añadir espacio para evitar solapamiento con el nav */
+    margin-bottom: 60px; /* Añadir espacio para evitar solapamiento con el footer */
   }
 }

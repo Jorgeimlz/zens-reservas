@@ -8,9 +8,9 @@ const Login = () => (
     <div className="login-page">
       <h2>RESERVAR</h2>
     </div>
-    <div className="form">
+    <div className="genReserva">
       <form>
-        <div className="form-grid">
+        <div className="genReserva-grid">
           <div className="column">
             <p>Nombre:</p>
             <input type="text" placeholder="Nombre" />
