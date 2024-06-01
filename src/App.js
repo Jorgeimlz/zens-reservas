@@ -12,8 +12,8 @@ import Contact from './components/Contact';
 import LoginAdmin from './components/LoginAdmin';
 import AdminPage from './components/AdminPage';
 import VerReservas from './components/verReservas';
+import publishPrty from './components/publishPrty';
 import { PrivateRoute } from './components/PrivaterRoute';
-
 function App() {
   return (
     <Router>
@@ -30,6 +30,7 @@ function App() {
           <Route path="/LoginAdmin" exact component={LoginAdmin} />
           <PrivateRoute path="/AdminPage" exact component={AdminPage} />
           <PrivateRoute path="/verReservas" exact component={VerReservas} />
+          <PrivateRoute path="/publishPrty" exact component={publishPrty} />
         </Switch>
       </div>
     </Router>

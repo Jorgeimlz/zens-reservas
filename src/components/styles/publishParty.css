@@ -1,0 +1,93 @@
+/* styles/publishParty.css */
+.centralPg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    background-image: url('../../../public/backPublish.png');
+    background-size: cover; /* Cubrir todo el contenedor */
+    background-position: center; /* Centrar la imagen */
+    color: white; /* Texto blanco */
+    padding: 20px; /* Agregar padding para evitar que el contenido toque los bordes en pantallas pequeñas */
+}
+
+.titulo h1 {
+    margin-bottom: 20px;
+    font-size: xx-large;
+}
+
+.reservar-button {
+    border: 2px solid purple;
+    background-color: transparent;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.reservar-button:hover {
+    background-color: purple;
+    color: white;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+.form label {
+    font-weight: bold;
+}
+
+.form label, .form input, .form select {
+    display: block;
+    margin: 10px 0; /* Margen superior e inferior para espaciar los elementos */
+    width: 80%; /* Ajusta el ancho según sea necesario */
+    max-width: 400px;
+    color: white;
+}
+
+.form input, .form select {
+    padding: 10px;
+    background-color: #000000; /* Fondo oscuro para los inputs */
+    border: 1px solid #4d0b59; 
+    border-radius: 5px;
+    color: white;
+}
+
+.form input::placeholder, .form select option {
+    color: #bbbbbb; /* Placeholder y opciones del select en gris claro */
+}
+
+/* Media Queries para hacer el diseño responsivo */
+@media (max-width: 768px) {
+    .form label, .form input, .form select {
+        width: 90%; /* Ajusta el ancho a 90% en pantallas más pequeñas */
+    }
+    
+    .reservar-button {
+        width: 90%; /* Ajusta el ancho a 90% en pantallas más pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .titulo h1 {
+        font-size: large; /* Reduce el tamaño de fuente en pantallas muy pequeñas */
+    }
+    
+    .form label, .form input, .form select {
+        width: 95%; /* Ajusta el ancho a 95% en pantallas más pequeñas */
+    }
+    
+    .reservar-button {
+        width: 95%; /* Ajusta el ancho a 95% en pantallas más pequeñas */
+    }
+}

@@ -13,7 +13,7 @@ const LoginAdmin = () => {
 
   return (
     <Layout>
-      <div className='form'>
+      <div className='forms'>
         <h4>Ingrese su usuario:</h4>
         <input type="text" id='user' />
         <h4>Ingrese su contraseña:</h4>
