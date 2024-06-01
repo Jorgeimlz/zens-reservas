@@ -23,7 +23,7 @@ function App() {
           <Route path="/reservar" exact component={ReservasPage} />
           <Route path="/policies" exact component={Policies} />
           <Route path="/about" exact component={About} />
-          <Route path="/login" exact component={Login} />
+          <Route path="/login/:idFiesta" component={Login} />
           <Route path="/register" exact component={Register} />
           <Route path="/gallery" exact component={Gallery} />
           <Route path="/contact" exact component={Contact} />

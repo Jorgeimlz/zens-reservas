@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'; // Asegúrate de importar Link desde react-router-dom
 import Layout from './Layout';
 import './styles/ReservasPage.css';
 
@@ -32,22 +33,22 @@ const ReservasPage = () => {
     <Layout>
       <div className="reservas-page">
         {sinFiestas ? (
-          <p>No hay fiestas disponibles por el momento, intentalo mas tarde &#128513; </p>
+          <p>No hay fiestas disponibles por el momento, intentalo más tarde &#128513; </p>
         ) : (
           <div className="flyers-container">
             {ultimasTresFiestas.map((fiesta) => (
-              <a href="/login" className="no-style-link" key={fiesta.idFiesta}>
+              <Link to={`/login/${fiesta.idFiesta}`} className="no-style-link" key={fiesta.idFiesta}>
                 <div className="flyer">
                   <div className="flyer-date">
-                    <span className="day">{fiesta.dia}</span>
                     <span className="date">{fiesta.fecha}</span>
+                    <span className="day">{fiesta.dia}</span> 
                   </div>
                   <div className="flyer-info">
                     <h3>{fiesta.nombreFiesta}</h3>
                     <p>{fiesta.descripcion}</p>
                   </div>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         )}
