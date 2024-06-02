@@ -4,3 +4,10 @@ export function irPublishParty (history){
       state: { logged: true }
     });
   }
+
+  export function irPublishGalery (history){
+    history.push({
+      pathname: '/publishGalery',
+      state: { logged: true }
+    });
+  }

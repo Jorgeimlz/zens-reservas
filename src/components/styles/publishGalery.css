@@ -1,0 +1,7 @@
+.prins {
+    display: flex;
+    flex-direction: column; /* Cambia la dirección del flex a columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+    text-align: center;
+    margin-top: 15%;
+}
