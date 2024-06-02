@@ -10,7 +10,7 @@ export function ingresar(history) {
   } else if (nombre === "zensSeguridad" && pswd === "security") {
     alert('Ingreso exitoso, bienvenido ' + nombre);
     history.push({
-      pathname: '/AdminPage',
+      pathname: '/seguridadPage',
       state: { logged: true }
     });
   } else {
