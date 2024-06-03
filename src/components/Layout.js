@@ -7,7 +7,7 @@ const Layout = ({ children }) => (
     <nav className="navbar-invisible">
       <div className="logo-container">
         <a href="/">
-          <img src="/zens.png" alt="Zens Logo" className="navbar-logo" />
+          <img src="/logoTemplate.png" alt="Zens Logo" className="navbar-logo" />
         </a>
       </div>
       <div className="links-container">
@@ -28,7 +28,7 @@ const Layout = ({ children }) => (
       <div className="logo-container">
         <div className='socialNet'>
           <img src="/igLogo.png" alt="instagram logo" className="footer-logo" />
-          <p>@zenscumbaya</p>
+          <p>@usuarioIG</p>
         </div>
       </div>
     </footer>

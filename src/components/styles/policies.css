@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 3%;
+    margin-top:5%;
     padding: 0 10px; /* Añade un padding horizontal para evitar que el texto toque los bordes */
 }
 
@@ -15,7 +15,7 @@
 }
 
 .title h2 {
-    font-size: 150px; /* Tamaño de fuente grande para destacar */
+    font-size: 90px; /* Tamaño de fuente grande para destacar */
     margin: 10px 0 50px 0; /* Aumenta el margen inferior para separar del contenido */
     font-family: "Barlow", sans-serif;
 }

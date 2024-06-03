@@ -10,7 +10,7 @@ const MainPage = () => (
     <nav className="navbar-invisible">
       <div className="logo-container">
         <Link to="/">
-          <img src="/zens.png" alt="Zens Logo" className="navbar-logo" />
+          <img src="/logoTemplate.png" alt="Zens Logo" className="navbar-logo" />
         </Link>
       </div>
       <div className="links-container">
@@ -35,7 +35,7 @@ const MainPage = () => (
     </nav>
 
     <div className="feel-the-sense">
-      <h2>Feel the Sense</h2>
+      <h2>SLOGAN EMPRESA</h2>
       <Link to="/reservar">
         <button className="reservar-button">Reservar</button>
       </Link>
@@ -47,7 +47,7 @@ const MainPage = () => (
       <div className="logo-container">
         <div className="socialNet">
           <img src="/igLogo.png" alt="instagram logo" className="footer-logo" />
-          <p>@zenscumbaya</p>
+          <p>@usuarioIG</p>
         </div>
       </div>
     </footer>
