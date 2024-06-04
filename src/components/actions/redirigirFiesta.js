@@ -25,3 +25,11 @@ export function irPublishParty (history){
       state: { logged: true }
     });
   }
+
+  
+  export function irPublishContact (history){
+    history.push({
+      pathname: '/publishContact',
+      state: { logged: true }
+    });
+  }

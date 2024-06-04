@@ -11,7 +11,8 @@ const Contact = () => {
       try {
         const resultado = await fetch(url);
         const respuesta = await resultado.json();
-        setContacto(respuesta);
+        const ultimo = respuesta.slice(-1);
+        setContacto(ultimo);
       } catch (error) {
         console.log("error la con api"+ error)
       }

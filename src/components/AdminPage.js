@@ -2,7 +2,7 @@
 import React from "react";
 import './styles/AdminPage.css';
 import { irReserva } from "./actions/redirigirReservas";
-import { irPublishAbout, irPublishParty, irPublishPolitic } from "./actions/redirigirFiesta";
+import { irPublishAbout, irPublishContact, irPublishParty, irPublishPolitic } from "./actions/redirigirFiesta";
 import { useHistory } from 'react-router-dom';
 import { irPublishGalery } from "./actions/redirigirFiesta";
 
@@ -23,6 +23,10 @@ const AdminPage = () => {
     const handlePoli = () =>{
     irPublishPolitic(history);
     }
+    const handleContact = () =>{
+        irPublishContact(history);
+        }
+
     return(<div className="adminPage"> 
         <h1>Bienvenido Administrador</h1>
         <div className="links">
@@ -31,6 +35,7 @@ const AdminPage = () => {
                     <button className="reserbutton" onClick={handleGalery} >Publicar en galeria</button>
                     <button className="reserbutton" onClick={handleAbout} >Publicar en About</button>
                     <button className="reserbutton" onClick={handlePoli} >Publicar nuevas Politicas</button>
+                    <button className="reserbutton" onClick={handleContact} >Actualizar info de contacto</button>
         </div>       
     </div>);
     
