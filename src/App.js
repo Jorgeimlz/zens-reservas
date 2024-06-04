@@ -16,6 +16,7 @@ import publishPrty from './components/publishPrty';
 import publishGalery from './components/publishGalery';
 import seguridadPage from './components/seguridadPage';
 import publishAbout from './components/publishAbout';
+import publishPolitics from './components/publishPolitics';
 import { PrivateRoute } from './components/PrivaterRoute';
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <PrivateRoute path="/publishGalery" exact component={publishGalery} />
           <PrivateRoute path="/seguridadPage" exact component={seguridadPage} />
           <PrivateRoute path="/publishAbout" exact component={publishAbout} />
+          <PrivateRoute path="/publishPolitics" exact component={publishPolitics} />
         </Switch>
       </div>
     </Router>

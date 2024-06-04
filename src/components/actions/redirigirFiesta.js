@@ -18,3 +18,10 @@ export function irPublishParty (history){
       state: { logged: true }
     });
   }
+
+  export function irPublishPolitic (history){
+    history.push({
+      pathname: '/publishPolitics',
+      state: { logged: true }
+    });
+  }
