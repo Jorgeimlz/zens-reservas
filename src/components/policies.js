@@ -1,29 +1,43 @@
-// src/components/Policies.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from './Layout';
 import './styles/policies.css';
 
-const Policies = () => (
-  <Layout>
-    <div className="body">
-      <div className="policies">
-        <div className="title">
-          <h2>POLÍTICAS</h2>
-        </div>
-        <div className="normas">
-          <ul>
-            <li>Prohibido el ingreso de personas menores de 18 años.</li>
-            <li>Nos reservamos el derecho de admisión.</li>
-            <li>Prohibido consumir dentro del establecimiento cualquier sustancia sujeta a fiscalización.</li>
-            <li>Es obligatorio presentar documento físico de identidad para el ingreso al club.</li>
-            <li>Las peleas y conductas violentas a cualquier persona dentro del club dan lugar a expulsión inmediata.</li>
-            <li>Las conductas de acoso, abuso o agresión sexual dan lugar a expulsión inmediata.</li>
-          </ul>
+const Policies = () => {
+  const [politicas, setPoliticas] = useState([]);
+  
+  const fetchPoliticasData = async () => {
+    const url = '/api/politicas'; 
+    try {
+      const response = await fetch(url);
+      const result = await response.json();
+      setPoliticas(result);
+    } catch (error) {
+      console.error('Error fetching the policies data:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchPoliticasData();
+  }, []);
+
+  return (
+    <Layout>
+      <div className="body">
+        <div className="policies">
+          <div className="title">
+            <h2>POLÍTICAS</h2>
+          </div>
+          <div className="normas">
+            <ul>
+              {politicas.map(politica => (
+                <li key={politica.idPolitica}>{politica.politica}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  </Layout>
-);
+    </Layout>
+  );
+}
 
 export default Policies;
-
