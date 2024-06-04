@@ -1,0 +1,40 @@
+.aboutPage {
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center;
+    flex-direction: column;
+    width: 100%; /* Ajusta el ancho al 100% de la ventana */
+    background-image: url('../../../public/adminWPP.png'); /* Ruta de la imagen */
+    background-size: cover; /* Cubrir todo el contenedor */
+    background-position: center; /* Centrar la imagen */
+    padding: 20px; /* Añade padding para un mejor diseño responsivo */
+    box-sizing: border-box; /* Incluye padding y border en el tamaño total del elemento */
+}
+
+.aboutPage h1 {
+    margin-top: 0;
+    padding: 10px;
+    text-align: center; /* Centra el texto horizontalmente */
+    color: white; /* Cambia el color del texto si es necesario */
+}
+
+.aboutPage label {
+    margin-top: 20px; /* Añade espacio superior */
+    padding: 10px; 
+    color: white; /* Cambia el color del texto si es necesario */
+}
+
+.aboutPage textarea {
+    width: 100%; /* Ajusta el ancho al 100% del contenedor */
+    max-width: 600px; /* Máximo ancho para pantallas grandes */
+    height: 150px;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    resize: none; /* Para evitar que el usuario cambie el tamaño del textarea */
+    box-sizing: border-box; /* Incluye padding y border en el tamaño total del elemento */
+}
+

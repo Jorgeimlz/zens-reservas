@@ -15,6 +15,7 @@ import VerReservas from './components/verReservas';
 import publishPrty from './components/publishPrty';
 import publishGalery from './components/publishGalery';
 import seguridadPage from './components/seguridadPage';
+import publishAbout from './components/publishAbout';
 import { PrivateRoute } from './components/PrivaterRoute';
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <PrivateRoute path="/publishPrty" exact component={publishPrty} />
           <PrivateRoute path="/publishGalery" exact component={publishGalery} />
           <PrivateRoute path="/seguridadPage" exact component={seguridadPage} />
+          <PrivateRoute path="/publishAbout" exact component={publishAbout} />
         </Switch>
       </div>
     </Router>

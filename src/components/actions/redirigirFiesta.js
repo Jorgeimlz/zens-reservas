@@ -11,3 +11,10 @@ export function irPublishParty (history){
       state: { logged: true }
     });
   }
+
+  export function irPublishAbout (history){
+    history.push({
+      pathname: '/publishAbout',
+      state: { logged: true }
+    });
+  }
