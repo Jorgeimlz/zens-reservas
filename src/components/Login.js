@@ -19,13 +19,14 @@ const Login = () => {
     setTelefono('');
     setHora('21:00');
   };
+  const vaucherG = generarVoucher();
 
   const postAPI = async (e) => {
     e.preventDefault();
     const reserva = {
       idReserva: 0, // asumiendo que el backend maneja la generación de este ID
       idFiesta: parseInt(idFiesta),
-      vaucher: generarVoucher(), // Correctamente escrito como 'vaucher'
+      vaucher: vaucherG, // Correctamente escrito como 'vaucher'
       nombreReserva: nombre,
       apellidoReserva: apellido,
       numeroPersonas: numeroPersonas,
@@ -47,7 +48,7 @@ const Login = () => {
         throw new Error(`Network response was not ok: ${errorText}`);
       }
       const resultado = await respuesta.json();
-      alert('Reserva realizada:', resultado);
+      alert("TU VOUCHER DE RESERVA ES: " + vaucherG );
       limpiarCampos(); // Limpia los campos después de la reserva exitosa
     } catch (error) {
       alert('Error al realizar la reserva:', error);

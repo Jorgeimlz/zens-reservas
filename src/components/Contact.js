@@ -1,7 +1,6 @@
 // src/components/Contact.js
 import React, {useEffect ,useState } from 'react';
 import { Link } from 'react-router-dom';
-import Layout from './Layout';
 import './styles/Contact.css';
 
 const Contact = () => {
@@ -55,7 +54,7 @@ const Contact = () => {
           <h2>Contacto</h2>
           <br></br>
           <div className='ubicacion'>
-            <a href='https://www.google.com.ec/maps/@-0.1081339,-78.4699519,18z?hl=es'target='_blank'>
+            <a href="https://www.google.com/maps/place/0%C2%B011'24.4%22S+78%C2%B028'58.6%22W/@-0.1901032,-78.4855079,17z/data=!3m1!4b1!4m4!3m3!8m2!3d-0.1901032!4d-78.482933?hl=es&entry=ttu" target='_blank'>
               <img src='./ubi.png' ></img>
             </a>
           </div>
