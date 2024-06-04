@@ -13,3 +13,26 @@
     font-size: 18px;
   }
   
+  .contact-page img{
+    height: 20px;
+  }
+
+  .ubicacion img{
+    border: 10px;
+    border-radius: 3%;
+    height: 200px;
+    margin-bottom: 2%;
+  }
+  .footerContact{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+  }
+  .dosColumnas{
+    display: flex;
+    align-items: center;
+  }
+  .dosColumnas p{
+    margin-left: 2%;
+  }

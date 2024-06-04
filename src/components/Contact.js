@@ -1,28 +1,87 @@
 // src/components/Contact.js
-import React from 'react';
+import React, {useEffect ,useState } from 'react';
+import { Link } from 'react-router-dom';
 import Layout from './Layout';
 import './styles/Contact.css';
 
-const Contact = () => (
-  <Layout>
-    <div className="contact-page">
-      <h2>Contacto</h2>
-      <p>Información de contacto.</p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer a euismod nibh.
-        Aenean massa purus, euismod dapibus augue ac, rutrum tristique ipsum. Etiam ac tellus tincidunt,
-        dictum diam sit amet, tincidunt magna. Donec eget metus accumsan, pellentesque diam a, sagittis quam.
-        Nunc eu diam orci. Ut vitae dictum odio, ac volutpat ante. Duis volutpat id eros eu blandit. 
-        Donec congue ex erat, id vestibulum elit malesuada ac. Curabitur vel felis vehicula, mollis mi in, 
-        placerat turpis.
-        Maecenas eu lacinia lacus, et tempus tortor. In hac habitasse platea dictumst. 
-        Aliquam ullamcorper, sem non tempus scelerisque, lacus felis faucibus felis, at ullamcorper 
-        leo tellus vitae erat. Suspendisse sodales aliquet nisi in pellentesque. Vivamus lobortis odio 
-        sed nunc condimentum, et feugiat leo malesuada. Aliquam erat volutpat. Fusce tristique sed nisi 
-        ut suscipit. Sed ipsum magna, tristique eu facilisis eu, rhoncus nec nisi. Etiam auctor nunc ut 
-        tempor ullamcorper.</p>
-    </div>
-  </Layout>
-);
+const Contact = () => {
+  const [Contacto, setContacto] = useState([]);
+  const contactAPI = async () =>{
+      const url = 'api/contact';
+      try {
+        const resultado = await fetch(url);
+        const respuesta = await resultado.json();
+        setContacto(respuesta);
+      } catch (error) {
+        console.log("error la con api"+ error)
+      }
+      
+
+  }
+  useEffect(() => {
+    contactAPI();
+  }, []);
+
+  return(
+    <div className='contactMainPage'>
+        <nav className="navbar-invisible">
+          <div className="logo-container">
+            <Link to="/">
+              <img src="/logoTemplate.png" alt="Zens Logo" className="navbar-logo" />
+            </Link>
+          </div>
+          <div className="links-container">
+            <ul className="navbar-links">
+              <li>
+                <Link to="/about">Sobre nosotros</Link>
+              </li>
+              <li>
+                <Link to="/policies">Políticas</Link>
+              </li>
+              <li>
+                <Link to="/gallery">Galería</Link>
+              </li>
+              <li>
+                <Link to="/contact">Contacto</Link>
+              </li>
+              <li className='admin'>
+                <Link to="/LoginAdmin">Soy admin</Link>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div className="contact-page">
+          <h2>Contacto</h2>
+          <br></br>
+          <div className='ubicacion'>
+            <a href='https://www.google.com.ec/maps/@-0.1081339,-78.4699519,18z?hl=es'target='_blank'>
+              <img src='./ubi.png' ></img>
+            </a>
+          </div>
+          {Contacto.map(contact => (
+                <p key={contact.idContact}> {contact.correo} </p>
+              ))}
+          {Contacto.map(contact => (
+                <p  key={contact.idContact}>  <img src='./ecFlag.png'/> {contact.numero}</p>
+              ))}
+          
+          
+        </div>
+
+        <footer className="footerContact">
+          <h4>Soporte</h4>
+          <p>Developed by Aurora.SAS &clubs;</p>
+          <div className='dosColumnas'>
+          <p>soporte@aurora.com</p>
+          <p>+593 999567465</p>
+          </div>
+
+        </footer>
+
+     </div>
+
+  );
+  
+}
 
 export default Contact;
