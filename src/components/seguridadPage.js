@@ -2,26 +2,35 @@ import '../components/styles/seguridadPage.css';
 import React, { useState } from "react";
 
 const SeguridadPage = () => {
-    const [reservaId, setReservaId] = useState("");
+    const [voucher, setVoucher] = useState("");
     const [resultado, setResultado] = useState(null);
     const [error, setError] = useState(null);
+    const [reservas, setReservas] = useState([]);
 
     const handleInputChange = (e) => {
-        setReservaId(e.target.value);
+        setVoucher(e.target.value);
     };
 
     const verificarReserva = async () => {
         try {
-            const response = await fetch(`/api/Reservas/${reservaId}`);
+            const response = await fetch(`/api/Reservas`);
             if (!response.ok) {
                 throw new Error(`Error: ${response.status}`);
             }
-            const data = await response.json();
-            setResultado(data);
+            const data = await response.json(); 
+            setReservas(data);
             setError(null);
 
-            // Delete the reservation after fetching the data
-            await deleteReserva(reservaId);
+            const reservaEncontrada = reservas.find(reserva => reserva.vaucher === voucher);
+            if (!reservaEncontrada) {
+                throw new Error("No existe reserva con este voucher");
+            }
+
+            setResultado(reservaEncontrada);
+            setError(null);
+
+            // Eliminar la reserva
+            await deleteReserva(reservaEncontrada.idReserva);
         } catch (error) {
             setResultado(null);
             setError(error.message);
@@ -46,10 +55,10 @@ const SeguridadPage = () => {
     return (
         <div className="pageSeguridad">
             <h1>CONTROL DE RESERVAS</h1>
-            <p>Ingrese el número de reserva: </p>
+            <p>Ingrese el voucher de la reserva: </p>
             <input
                 type="text"
-                value={reservaId}
+                value={voucher}
                 onChange={handleInputChange}
             />
             <button className="reservar-button" onClick={verificarReserva}>
