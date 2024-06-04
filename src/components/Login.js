@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Layout from './Layout';
 import './styles/Login.css';
+import { generarVoucher } from './actions/veriCredenciales';
 
 const Login = () => {
   const { idFiesta } = useParams();
@@ -11,11 +12,20 @@ const Login = () => {
   const [telefono, setTelefono] = useState('');
   const [hora, setHora] = useState('21:00');
 
+  const limpiarCampos = () => {
+    setNombre('');
+    setApellido('');
+    setNumeroPersonas('1');
+    setTelefono('');
+    setHora('21:00');
+  };
+
   const postAPI = async (e) => {
     e.preventDefault();
     const reserva = {
       idReserva: 0, // asumiendo que el backend maneja la generación de este ID
       idFiesta: parseInt(idFiesta),
+      vaucher: generarVoucher(), // Correctamente escrito como 'vaucher'
       nombreReserva: nombre,
       apellidoReserva: apellido,
       numeroPersonas: numeroPersonas,
@@ -33,10 +43,12 @@ const Login = () => {
       });
 
       if (!respuesta.ok) {
-        throw new Error('Network response was not ok');
+        const errorText = await respuesta.text();
+        throw new Error(`Network response was not ok: ${errorText}`);
       }
       const resultado = await respuesta.json();
       alert('Reserva realizada:', resultado);
+      limpiarCampos(); // Limpia los campos después de la reserva exitosa
     } catch (error) {
       alert('Error al realizar la reserva:', error);
     }

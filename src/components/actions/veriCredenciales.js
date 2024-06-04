@@ -17,3 +17,12 @@ export function ingresar(history) {
     alert('Verifique sus credenciales');
   }
 }
+
+export function generarVoucher(){
+  const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let voucher = '';
+  for (let i = 0; i < 4; i++) {
+    voucher += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+  }
+  return voucher;
+}
