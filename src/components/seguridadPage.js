@@ -7,10 +7,6 @@ const SeguridadPage = () => {
     const [error, setError] = useState(null);
     const [reservas, setReservas] = useState([]);
 
-    const handleInputChange = (e) => {
-        setVoucher(e.target.value);
-    };
-
     const verificarReserva = async () => {
         try {
             const response = await fetch(`/api/Reservas`);
@@ -21,7 +17,7 @@ const SeguridadPage = () => {
             setReservas(data);
             setError(null);
 
-            const reservaEncontrada = reservas.find(reserva => reserva.vaucher === voucher);
+            const reservaEncontrada = data.find(reserva => reserva.vaucher === voucher);
             if (!reservaEncontrada) {
                 throw new Error("No existe reserva con este voucher");
             }
@@ -48,6 +44,10 @@ const SeguridadPage = () => {
         } catch (error) {
             setError(error.message);
         }
+    };
+
+    const handleInputChange = (e) => {
+        setVoucher(e.target.value);
     };
 
     const camposMostrar = ['nombreReserva', 'apellidoReserva', 'numeroPersonas', 'hora', 'telefono'];
@@ -80,6 +80,7 @@ const SeguridadPage = () => {
             {error && (
                 <div className='resultado'>
                     <h2 style={{ color: 'red' }}>NO EXISTE RESERVA O YA FUE USADA</h2>
+                    <p>{error}</p>
                 </div>
             )}
         </div>

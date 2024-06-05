@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Layout from './Layout';
 import './styles/Login.css';
 import { generarVoucher } from './actions/veriCredenciales';
+import { enviarCorreo } from './actions/enviarCorreo';
 
 const Login = () => {
   const { idFiesta } = useParams();
@@ -49,6 +50,7 @@ const Login = () => {
       }
       const resultado = await respuesta.json();
       alert("TU VOUCHER DE RESERVA ES: " + vaucherG );
+      enviarCorreo();
       limpiarCampos(); // Limpia los campos después de la reserva exitosa
     } catch (error) {
       alert('Error al realizar la reserva:', error);
