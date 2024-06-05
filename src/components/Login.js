@@ -4,6 +4,8 @@ import Layout from './Layout';
 import './styles/Login.css';
 import { generarVoucher } from './actions/veriCredenciales';
 import { enviarCorreo } from './actions/enviarCorreo';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const { idFiesta } = useParams();
@@ -49,11 +51,10 @@ const Login = () => {
         throw new Error(`Network response was not ok: ${errorText}`);
       }
       const resultado = await respuesta.json();
-      alert("TU VOUCHER DE RESERVA ES: " + vaucherG );
-      enviarCorreo();
+      toast.success("TU VOUCHER DE RESERVA ES: " + vaucherG, { position: "top-center" });
       limpiarCampos(); // Limpia los campos después de la reserva exitosa
     } catch (error) {
-      alert('Error al realizar la reserva:', error);
+      toast.error('Error al realizar la reserva: ' + error.message, { position: "top-center" });
     }
   };
 
@@ -95,8 +96,11 @@ const Login = () => {
           <button type="submit" className='reservar-button'>Reservar</button>
         </form>
       </div>
+      <ToastContainer />
     </Layout>
   );
 };
 
 export default Login;
+
+
