@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Layout from './Layout';
 import './styles/Login.css';
@@ -14,6 +14,28 @@ const Login = () => {
   const [numeroPersonas, setNumeroPersonas] = useState('1');
   const [telefono, setTelefono] = useState('');
   const [hora, setHora] = useState('21:00');
+  const [reservas, setReservas] = useState([]); // Almacena las reservas con el idFiesta para controlar aforo
+  const [aforo, setAforo] = useState(0); // Almacena el total de personas
+
+  useEffect(() => {
+    // Obtener reservas para controlar aforo
+    const getReservas = async () => {
+      try {
+        const id = parseInt(idFiesta);
+        const url = await fetch(`/api/Reservas/GetAllIdFiesta/${id}`);
+        const res = await url.json();
+        setReservas(res); 
+        // Sumar el total de personas de las reservas
+        const total = res.reduce((sum, reserva) => sum + parseInt(reserva.numeroPersonas), 0);
+        console.log('Personas reservadas:'+ total + ' de 10');
+        setAforo(total);
+      } catch (error) {
+        console.error('Error al obtener las reservas:', error);
+      }
+    };
+
+    getReservas(); 
+  }, [idFiesta]); 
 
   const limpiarCampos = () => {
     setNombre('');
@@ -22,17 +44,27 @@ const Login = () => {
     setTelefono('');
     setHora('21:00');
   };
-  const vaucherG = generarVoucher();
 
+  // Generar voucher random
+  const voucherG = generarVoucher(); 
+
+  // Post reserva
   const postAPI = async (e) => {
     e.preventDefault();
+
+    const limiteAforo = 10;
+    if (aforo + parseInt(numeroPersonas) > limiteAforo) {
+      toast.error('No hay suficiente aforo disponible para esta reserva.', { position: "top-center" });
+      return;
+    }
+
     const reserva = {
-      idReserva: 0, // asumiendo que el backend maneja la generación de este ID
+      idReserva: 0, 
       idFiesta: parseInt(idFiesta),
-      vaucher: vaucherG, // Correctamente escrito como 'vaucher'
+      vaucher: voucherG, 
       nombreReserva: nombre,
       apellidoReserva: apellido,
-      numeroPersonas: numeroPersonas,
+      numeroPersonas: numeroPersonas, // Enviar como cadena
       hora: hora,
       telefono: telefono,
     };
@@ -51,8 +83,13 @@ const Login = () => {
         throw new Error(`Network response was not ok: ${errorText}`);
       }
       const resultado = await respuesta.json();
-      toast.success("TU VOUCHER DE RESERVA ES: " + vaucherG, { position: "top-center" });
+      toast.success("TU VOUCHER DE RESERVA ES: " + voucherG, { position: "top-center" });
       limpiarCampos(); // Limpia los campos después de la reserva exitosa
+
+      // Actualizar el total de personas
+      setAforo(prevTotal => prevTotal + parseInt(numeroPersonas));
+      // Actualizar la lista de reservas, asegurándose de que `prevReservas` sea siempre un array
+      setReservas(prevReservas => Array.isArray(prevReservas) ? [...prevReservas, reserva] : [reserva]);
     } catch (error) {
       toast.error('Error al realizar la reserva: ' + error.message, { position: "top-center" });
     }
@@ -102,5 +139,3 @@ const Login = () => {
 };
 
 export default Login;
-
-

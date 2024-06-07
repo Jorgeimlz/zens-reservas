@@ -139,6 +139,19 @@
   margin-right: 10px;
 }
 
+/* Admin Link Styles */
+.admin-link {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.admin-link a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
   .navbar-logo {

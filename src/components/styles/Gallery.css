@@ -1,33 +1,50 @@
 /* src/components/styles/Gallery.css */
 .gallery-page {
-  text-align: center;
-  padding: 50px;
+  padding: 20px;
 }
 
 .gallery-page h2 {
-  font-size: 48px;
-}
-
-.gallery-page p {
-  font-size: 18px;
+  margin-top: 5%;
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 10px;
-  margin-top: 20px;
+  justify-content: center;
 }
 
 .gallery-item {
   overflow: hidden;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  max-width: 100%;
 }
 
 .gallery-item img {
   width: 100%;
-  height: auto;
+  height: 200px; /* Establecer una altura fija para las imágenes */
+  object-fit: cover; /* Escalar y recortar las imágenes para llenar el contenedor */
   display: block;
-  object-fit: cover;
 }
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .gallery-page {
+    padding: 10px;
+  }
+
+  .gallery-page h2 {
+    font-size: 1.5em;
+  }
+
+  .gallery-grid {
+    gap: 5px;
+  }
+
+  .gallery-item img {
+    height: 150px; /* Ajustar la altura de las imágenes para pantallas más pequeñas */
+  }
+}
+

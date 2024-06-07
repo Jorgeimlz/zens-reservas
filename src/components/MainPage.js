@@ -27,9 +27,6 @@ const MainPage = () => (
           <li>
             <Link to="/contact">Contacto</Link>
           </li>
-          <li className='admin'>
-            <Link to="/LoginAdmin">Soy admin</Link>
-          </li>
         </ul>
       </div>
     </nav>
@@ -49,6 +46,9 @@ const MainPage = () => (
           <img src="/igLogo.png" alt="instagram logo" className="footer-logo" />
           <p>@usuarioIG</p>
         </div>
+      </div>
+      <div className='admin-link'>
+        <Link to="/LoginAdmin">Staff</Link>
       </div>
     </footer>
   </div>

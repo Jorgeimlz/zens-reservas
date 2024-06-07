@@ -1,38 +1,91 @@
 /* src/components/styles/Contact.css */
+
+/* Estilos base */
+
 .contact-page {
-    text-align: center;
-    padding: 50px;
-    margin-top: 5%;
-  }
-  
+  text-align: center;
+  padding: 5vw;
+  margin-top: 5%;
+}
+
+.contact-page h2 {
+  font-size: 3vw;
+}
+
+.contact-page p {
+  font-size: 1.5vw;
+}
+
+.contact-page img {
+  height: 3vw;
+}
+
+.ubicacion img {
+  border: 0.5vw;
+  border-radius: 3%;
+  height: 20vw;
+  margin-bottom: 2%;
+}
+
+.footerContact {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.dosColumnas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+  flex-direction: row;
+}
+
+.dosColumnas p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos para dispositivos más pequeños */
+
+@media screen and (max-width: 768px) {
   .contact-page h2 {
-    font-size: 48px;
-  }
-  
-  .contact-page p {
-    font-size: 18px;
-  }
-  
-  .contact-page img{
-    height: 20px;
+      font-size: 5vw;
   }
 
-  .ubicacion img{
-    border: 10px;
-    border-radius: 3%;
-    height: 200px;
-    margin-bottom: 2%;
+  .contact-page p {
+      font-size: 3vw;
   }
-  .footerContact{
-    display: flex;
-    align-items: center;
-    text-align: center;
-    flex-direction: column;
+
+  .contact-page img {
+      height: 6vw;
   }
-  .dosColumnas{
-    display: flex;
-    align-items: center;
+
+  .ubicacion img {
+      height: 40vw;
   }
-  .dosColumnas p{
-    margin-left: 2%;
+}
+
+@media screen and (max-width: 480px) {
+  .contact-page {
+      padding: 10vw;
   }
+
+  .contact-page h2 {
+      font-size: 7vw;
+  }
+
+  .contact-page p {
+      font-size: 4vw;
+  }
+
+  .contact-page img {
+      height: 10vw;
+  }
+
+  .ubicacion img {
+      height: 60vw;
+  }
+}
+

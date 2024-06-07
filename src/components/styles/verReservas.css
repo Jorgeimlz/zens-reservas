@@ -6,10 +6,10 @@
     background-attachment: fixed; /* Fijar la imagen */
     height: 100vh; /* Asegurar que cubra toda la altura de la pantalla */
     width: 100vw; /* Asegurar que cubra toda la anchura de la pantalla */
-    overflow: hidden; /* Evitar el desplazamiento */
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: auto; /* Permitir el desplazamiento en el contenedor principal */
 }
 
 .mainPage {
@@ -18,7 +18,9 @@
     align-items: center;
     color: #ffffff; /* Color de texto blanco */
     width: 100%; /* Asegurar que el contenedor principal ocupa todo el ancho */
-    height: 100%; /* Asegurar que el contenedor principal ocupa toda la altura */
+    height: auto; /* Permitir que la altura se ajuste automáticamente */
+    min-height: 100%; /* Asegurar que cubre al menos toda la altura de la pantalla */
+    padding: 20px; /* Añadir un poco de padding */
 }
 
 h1, button {
@@ -54,6 +56,7 @@ h1, button {
     margin: 0 1%; /* Espaciado entre columnas */
     flex: 1;
     max-width: 30%; /* Asegurar que cada columna no exceda el 30% del ancho */
+    max-height: 80vh; /* Establecer una altura máxima para las columnas */
 }
 
 ul {
@@ -80,5 +83,7 @@ h3 {
         margin: 0;
         width: 100%; /* Ocupa todo el ancho en dispositivos móviles */
         max-width: none;
+        max-height: none; /* Eliminar la restricción de altura máxima en dispositivos móviles */
+        overflow-y: visible; /* Permitir que el contenido sea visible sin desplazamiento en dispositivos móviles */
     }
 }

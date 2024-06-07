@@ -27,11 +27,14 @@ const Gallery = () => {
     <Layout>
       <div className="gallery-page">
         <h2>Galería</h2>
-        <p>Contenido de la galería.</p>
         <div className="gallery-grid">
           {images.map((image) => (
             <div key={image.id} className="gallery-item">
-              <img src={image.urLimg} alt={image.nombreArchivo} onError={(e) => e.target.src = 'default-image-url.jpg'} />
+              <img
+                src={`data:${image.mime};base64,${image.urLimg}`}
+                alt={image.nombreArchivo}
+                onError={(e) => e.target.src = 'default-image-url.jpg'}
+              />
             </div>
           ))}
         </div>
@@ -41,4 +44,3 @@ const Gallery = () => {
 };
 
 export default Gallery;
-
