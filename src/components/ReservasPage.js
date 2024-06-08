@@ -40,7 +40,7 @@ const ReservasPage = () => {
               <Link to={`/login/${fiesta.idFiesta}`} className="no-style-link" key={fiesta.idFiesta}>
                 <div className="flyer">
                   <div className="flyer-date">
-                    <span className="date">{fiesta.fecha}</span>
+                    <span className="date">{fiesta.numerodia}</span>
                     <span className="day">{fiesta.dia}</span> 
                   </div>
                   <div className="flyer-info">

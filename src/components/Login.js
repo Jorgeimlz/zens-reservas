@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom'; 
 import Layout from './Layout';
 import './styles/Login.css';
 import { generarVoucher } from './actions/veriCredenciales';
-import { enviarCorreo } from './actions/enviarCorreo';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -14,27 +13,47 @@ const Login = () => {
   const [numeroPersonas, setNumeroPersonas] = useState('1');
   const [telefono, setTelefono] = useState('');
   const [hora, setHora] = useState('21:00');
-  const [reservas, setReservas] = useState([]); // Almacena las reservas con el idFiesta para controlar aforo
-  const [aforo, setAforo] = useState(0); // Almacena el total de personas
+  const [reservas, setReservas] = useState([]);
+  const [aforo, setAforo] = useState(0);
+  const [fechaFiesta, setFechaFiesta] = useState('');
+  const history = useHistory(); 
 
   useEffect(() => {
-    // Obtener reservas para controlar aforo
+    //OBTENER FECHA DE LA FIESTA
+    const getFechat = async () => {
+      try {
+        const idF = parseInt(idFiesta, 10);
+        const url = `/api/Fiestas/${idF}`;
+        const respu = await fetch(url);
+        if (!respu.ok) {
+          throw new Error(`Error fetching data: ${respu.statusText}`);
+        }
+        const fiestaData = await respu.json();
+        setFechaFiesta(fiestaData.fecha); 
+        console.log(fiestaData.fecha);
+      } catch (error) {
+        console.error('Error al obtener la fecha de la fiesta:', error);
+      }
+    };
+    //OBTENER LAS RESERVAS EN ESA FIESTA HECHA PARA VERIFICAR AFORO
     const getReservas = async () => {
       try {
-        const id = parseInt(idFiesta);
+        const id = parseInt(idFiesta, 10);
         const url = await fetch(`/api/Reservas/GetAllIdFiesta/${id}`);
+        if (!url.ok) {
+          throw new Error(`Error fetching data: ${url.statusText}`);
+        }
         const res = await url.json();
-        setReservas(res); 
-        // Sumar el total de personas de las reservas
-        const total = res.reduce((sum, reserva) => sum + parseInt(reserva.numeroPersonas), 0);
-        console.log('Personas reservadas:'+ total + ' de 10');
+        setReservas(res);
+        const total = res.reduce((sum, reserva) => sum + parseInt(reserva.numeroPersonas, 10), 0);
         setAforo(total);
       } catch (error) {
         console.error('Error al obtener las reservas:', error);
       }
     };
 
-    getReservas(); 
+    getFechat();
+    getReservas();
   }, [idFiesta]); 
 
   const limpiarCampos = () => {
@@ -45,30 +64,41 @@ const Login = () => {
     setHora('21:00');
   };
 
-  // Generar voucher random
-  const voucherG = generarVoucher(); 
-
-  // Post reserva
   const postAPI = async (e) => {
     e.preventDefault();
-
-    const limiteAforo = 10;
-    if (aforo + parseInt(numeroPersonas) > limiteAforo) {
+    //aforo, cambiar solo 15 x aforo limite deseado
+    const limiteAforo = 15;
+    if (aforo + parseInt(numeroPersonas, 10) > limiteAforo) {
       toast.error('No hay suficiente aforo disponible para esta reserva.', { position: "top-center" });
       return;
     }
 
+    const today = new Date();
+    const fechaActualSinHora = new Date(today.setHours(0, 0, 0, 0));
+    const fechaFiestaSinHora = new Date(new Date(fechaFiesta).setHours(0, 0, 0, 0));
+    console.log(fechaActualSinHora); // Ver en consola hora actual
+    console.log(fechaFiestaSinHora); // Ver en consola hora de fiesta
+    // Control de fechas
+    if (fechaFiestaSinHora < fechaActualSinHora) {
+      toast.error('No puedes reservar para una fiesta pasada.', { position: "top-center" });
+      return;
+    }
+
+    // Generar el voucher en el momento de la reserva
+    const voucherG = generarVoucher();
+
     const reserva = {
-      idReserva: 0, 
-      idFiesta: parseInt(idFiesta),
-      vaucher: voucherG, 
+      idReserva: 0,
+      idFiesta: parseInt(idFiesta, 10),
+      vaucher: voucherG,
       nombreReserva: nombre,
       apellidoReserva: apellido,
-      numeroPersonas: numeroPersonas, // Enviar como cadena
+      numeroPersonas: numeroPersonas.toString(), 
       hora: hora,
       telefono: telefono,
     };
-
+    
+    //HACER POST DE LA RESERVA
     try {
       const respuesta = await fetch('/api/Reservas', {
         method: 'POST',
@@ -84,11 +114,8 @@ const Login = () => {
       }
       const resultado = await respuesta.json();
       toast.success("TU VOUCHER DE RESERVA ES: " + voucherG, { position: "top-center" });
-      limpiarCampos(); // Limpia los campos después de la reserva exitosa
-
-      // Actualizar el total de personas
-      setAforo(prevTotal => prevTotal + parseInt(numeroPersonas));
-      // Actualizar la lista de reservas, asegurándose de que `prevReservas` sea siempre un array
+      limpiarCampos();
+      setAforo(prevTotal => prevTotal + parseInt(numeroPersonas, 10));
       setReservas(prevReservas => Array.isArray(prevReservas) ? [...prevReservas, reserva] : [reserva]);
     } catch (error) {
       toast.error('Error al realizar la reserva: ' + error.message, { position: "top-center" });

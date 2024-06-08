@@ -6,15 +6,17 @@ const PublishParty = () => {
     const [descripcion, setDescripcion] = useState("");
     const [numeroDia, setNumeroDia] = useState("");
     const [dia, setDia] = useState("THU");
+    const [date, setDate] = useState();
 
     const handleSubmit = async () => {
         const url = '/api/Fiestas';
         const fiestaData = {
             idFiesta: 0,
-            dia: numeroDia, // Número del día del input
-            fecha: dia, // Día del select
-            nombreFiesta: nombreFiesta, // Nombre de la fiesta del input
-            descripcion: descripcion // Descripción de la fiesta del input
+            numeroDia: numeroDia,
+            dia: dia, 
+            nombreFiesta: nombreFiesta, 
+            descripcion: descripcion,
+            fecha: date
         };
 
         try {
@@ -59,7 +61,7 @@ const PublishParty = () => {
                     value={descripcion} 
                     onChange={(e) => setDescripcion(e.target.value)} 
                 />
-                <label>Seleccione las iniciales del día:</label>
+                <label>Seleccione las iniciales del día: Formato visual</label>
                 <select 
                     value={dia} 
                     onChange={(e) => setDia(e.target.value)}>
@@ -67,12 +69,18 @@ const PublishParty = () => {
                     <option value="FRY">FRY</option>
                     <option value="SAT">SAT</option>
                 </select>
-                <label>Ingrese el número del día:</label>
+                <label>Ingrese el número del día: Formato visual</label>
                 <input 
                     type="text" 
                     placeholder="Número del día" 
                     value={numeroDia} 
                     onChange={(e) => setNumeroDia(e.target.value)} 
+                />
+                <label>Ingrese la fecha de la fiesta</label>
+                <input 
+                    type="date" 
+                    value={date} 
+                    onChange={(e) => setDate(e.target.value)} 
                 />
                 <button className="reservar-button" onClick={handleSubmit}>Publicar</button>
             </div>
