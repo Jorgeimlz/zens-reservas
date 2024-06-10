@@ -9,6 +9,8 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  padding-top: 60px; /* Avoid overlap with navbar */
+  padding-bottom: 60px; /* Avoid overlap with footer */
 }
 
 /* NavBarInvisible Styles */
@@ -20,36 +22,58 @@
   width: 100%;
   z-index: 1000;
   display: flex;
-  justify-content: space-between; /* Changed from center */
+  justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 10px 20px;
   box-sizing: border-box;
+  transition: background-color 0.3s;
+}
+
+.navbar-invisible.open {
+  background-color: rgba(0, 0, 0, 0.8); /* Dark background when menu is open */
 }
 
 /* Navbar logo */
 .navbar-logo {
-  height: 50px; /* Smaller size for desktop */
+  height: 60px; /* Adjusted size for desktop */
   max-width: 100%;
-  z-index: 1500;
 }
 
-/* Container adjustments for better alignment */
+.burger-menu {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
 .logo-container {
-  flex-shrink: 0;
+  display: flex;
+  align-items: center;
 }
 
 .links-container {
-  display: flex;
+  display: none; /* Hidden by default */
   align-items: center;
   justify-content: center;
   flex: 1;
 }
 
+.links-container.show {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 60px; /* Adjust as needed */
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 999;
+}
+
 /* Links adjustments */
 .navbar-links {
   list-style-type: none;
-  display: flex;
-  justify-content: flex-end;
   padding: 0;
   margin: 0;
   font-family: "Barlow", sans-serif;
@@ -77,53 +101,51 @@
 }
 
 /* Media Queries for Responsiveness */
-@media (max-width: 1024px) {
-  .navbar-invisible {
-      padding: 10px 20px; /* Adjust padding */
-  }
-
-  .navbar-logo {
-      height: 45px; /* Adjust logo size */
-  }
-}
-
 @media (max-width: 768px) {
   .navbar-invisible {
-      flex-direction: column; /* Stack elements vertically */
-      align-items: flex-start; /* Align items to start */
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
   }
 
   .navbar-logo {
-      height: 40px; /* Adjust logo size */
-      margin-bottom: 10px; /* Add margin for separation */
+    height: 50px; /* Adjusted size for tablets */
   }
 
-  .links-container {
-      justify-content: flex-start;
+  .burger-menu {
+    display: block; /* Show burger menu on smaller screens */
+  }
+
+  .links-container.show {
+    display: flex;
   }
 
   .navbar-links {
-      flex-direction: column;
-      align-items: flex-start;
-      width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
   }
 
   .navbar-links li {
-      margin: 10px 0; /* Add spacing between links */
+    margin: 10px 0;
+  }
+
+  .navbar-links li a {
+    font-size: 18px;
   }
 }
 
 @media (max-width: 480px) {
   .navbar-invisible {
-      padding: 10px; /* Reduce padding for small screens */
+    padding: 10px;
   }
 
   .navbar-logo {
-      height: 35px; /* Adjust logo size */
+    height: 40px; /* Adjusted size for small screens */
   }
 
   .navbar-links li a {
-      font-size: 14px; /* Smaller font size for links */
+    font-size: 16px;
   }
 }
 
@@ -153,22 +175,22 @@
 
 @media (max-width: 768px) {
   .footer {
-      padding: 15px;
-      font-size: 14px;
+    padding: 15px;
+    font-size: 14px;
   }
 
   .footer-logo {
-      height: 30px;
+    height: 30px;
   }
 }
 
 @media (max-width: 480px) {
   .footer {
-      padding: 10px;
-      font-size: 12px;
+    padding: 10px;
+    font-size: 12px;
   }
 
   .footer-logo {
-      height: 25px;
+    height: 25px;
   }
 }

@@ -126,6 +126,7 @@ const Login = () => {
     <Layout>
       <div className="login-page">
         <h2>RESERVAR</h2>
+        <p style={{fontWeight: 'bold'}}>Recuarda tomar foto de tu voucher. ¡Tendras que presentarlo a la entrada!</p>
       </div>
       <div className="genReserva">
         <form onSubmit={postAPI}>
@@ -158,8 +159,7 @@ const Login = () => {
             </div>
           </div>
           <button type="submit" className='reservar-button'>Reservar</button>
-          <p style={{fontWeight: 'bold'}}>Recuarda tomar foto de tu voucher. ¡Tendras que presentarlo a la entrada!</p>
-        </form>
+          </form>
       </div>
       <ToastContainer />
     </Layout>
