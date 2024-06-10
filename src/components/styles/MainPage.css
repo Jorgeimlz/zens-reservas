@@ -1,8 +1,12 @@
+/* Ajustes Generales */
 .main-page {
   position: relative;
   width: 100%;
   height: 100vh; /* Ocupa toda la altura de la ventana */
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ajusta el contenido dentro de la página */
 }
 
 .background-video {
@@ -21,31 +25,23 @@
 .navbar-invisible {
   background-color: transparent;
   position: absolute;
-  top: 20px;
+  top: 10px;
   left: 0;
   width: 100%;
   z-index: 1000;
   display: flex;
-  justify-content: center;
-  padding: 0 20px;
+  justify-content: space-between; /* Espacio entre logo y enlaces */
+  padding: 0 10px;
   box-sizing: border-box;
 }
 
 .navbar-logo {
-  margin-top: 2%;
-  height: 20px; 
-  position: absolute;
-  left: 10px;
-  top: 20px;
-  transform: translateY(-50%);
-  z-index: 1500;
+  height: 20px;
 }
 
 .links-container {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 100%;
 }
 
 .navbar-links {
@@ -79,15 +75,6 @@
 }
 
 /* FeelTheSense Styles */
-.feel-the-sense h2 {
-  font-family: "cooper-black-std", serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 5vw;
-  text-align: center;
-  color: white;
-}
-
 .feel-the-sense {
   display: flex;
   flex-direction: column;
@@ -95,6 +82,15 @@
   align-items: center;
   height: calc(100vh - 100px);
   margin-top: 3%;
+  text-align: center;
+}
+
+.feel-the-sense h2 {
+  font-family: "cooper-black-std", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 5vw;
+  color: white;
 }
 
 .reservar-button {
@@ -122,16 +118,17 @@
   padding: 20px;
   text-align: center;
   font-size: 16px;
-  position: fixed;
-  left: 0;
-  bottom: 0;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .socialNet {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 10px;
 }
 
 .footer-logo {
@@ -141,7 +138,7 @@
 
 /* Admin Link Styles */
 .admin-link {
-  position: absolute;
+  position: fixed;
   bottom: 10px;
   right: 10px;
 }
@@ -152,19 +149,66 @@
   font-weight: bold;
 }
 
-/* Media Queries for Responsiveness */
+/* Hamburger Menu Styles */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.hamburger-menu div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+.bar1.change {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.bar2.change {
+  opacity: 0;
+}
+
+.bar3.change {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
 @media (max-width: 768px) {
-  .navbar-logo {
-    height: 15px; /* Reducir aún más la altura del logo */
-    top: 10px;
+  .hamburger-menu {
+    display: flex;
+  }
+
+  .links-container {
+    display: none; /* Ocultar enlaces de navegación por defecto */
+    flex-direction: column;
+    position: absolute;
+    top: 50px; /* Debajo de la barra de navegación */
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  .links-container.open {
+    display: flex; /* Mostrar enlaces de navegación cuando esté abierto */
   }
 
   .navbar-links {
     flex-direction: column;
+    width: 100%;
   }
 
   .navbar-links li {
     margin: 10px 0;
+  }
+
+  .navbar-logo {
+    height: 15px;
   }
 
   .feel-the-sense h2 {
@@ -175,16 +219,28 @@
     font-size: 16px;
     padding: 8px 16px;
   }
+
+  .footer {
+    font-size: 14px;
+  }
+
+  .footer-logo {
+    height: 30px;
+  }
 }
 
 @media (max-width: 480px) {
-  .navbar-logo {
-    height: 30px; /* Reducir aún más la altura del logo */
-    top: 5px;
+  .hamburger-menu {
+    padding: 5px;
   }
 
-  .navbar-links {
-    flex-direction: column;
+  .links-container {
+    top: 40px;
+  }
+
+  .navbar-logo {
+    height: 30px;
+    top: 5px;
   }
 
   .navbar-links li {
@@ -208,3 +264,4 @@
     height: 30px;
   }
 }
+

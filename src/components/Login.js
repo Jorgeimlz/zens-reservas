@@ -67,7 +67,7 @@ const Login = () => {
   const postAPI = async (e) => {
     e.preventDefault();
     //aforo, cambiar solo 15 x aforo limite deseado
-    const limiteAforo = 15;
+    const limiteAforo = 20;
     if (aforo + parseInt(numeroPersonas, 10) > limiteAforo) {
       toast.error('No hay suficiente aforo disponible para esta reserva.', { position: "top-center" });
       return;
@@ -158,6 +158,7 @@ const Login = () => {
             </div>
           </div>
           <button type="submit" className='reservar-button'>Reservar</button>
+          <p style={{fontWeight: 'bold'}}>Recuarda tomar foto de tu voucher. ¡Tendras que presentarlo a la entrada!</p>
         </form>
       </div>
       <ToastContainer />

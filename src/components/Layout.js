@@ -1,4 +1,3 @@
-// src/components/Layout.js
 import React from 'react';
 import './styles/Layout.css';
 
@@ -6,7 +5,7 @@ const Layout = ({ children }) => (
   <div className="layout">
     <nav className="navbar-invisible">
       <div className="logo-container">
-        <a href="/">
+        <a href="/" className="logo-link">
           <img src="/logoTemplate.png" alt="Zens Logo" className="navbar-logo" />
         </a>
       </div>

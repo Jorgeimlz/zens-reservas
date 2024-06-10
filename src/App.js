@@ -6,7 +6,6 @@ import ReservasPage from './components/ReservasPage';
 import Policies from './components/policies';
 import About from './components/About';
 import Login from './components/Login';
-import Register from './components/Register';
 import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 import LoginAdmin from './components/LoginAdmin';
@@ -29,7 +28,6 @@ function App() {
           <Route path="/policies" exact component={Policies} />
           <Route path="/about" exact component={About} />
           <Route path="/login/:idFiesta" component={Login} />
-          <Route path="/register" exact component={Register} />
           <Route path="/gallery" exact component={Gallery} />
           <Route path="/contact" exact component={Contact} />
           <Route path="/LoginAdmin" exact component={LoginAdmin} />
