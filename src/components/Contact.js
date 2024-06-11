@@ -1,7 +1,7 @@
-// src/components/Contact.js
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './styles/Contact.css';
+import Layout from './Layout';
 
 const Contact = () => {
   const [Contacto, setContacto] = useState([]);
@@ -23,30 +23,7 @@ const Contact = () => {
   }, []);
 
   return (
-    <div className='contactMainPage'>
-      <nav className="navbar-invisible">
-        <div className="logo-container">
-          <Link to="/">
-            <img src="/logoTemplate.png" alt="Zens Logo" className="navbar-logo" />
-          </Link>
-        </div>
-        <div className="links-container">
-          <ul className="navbar-links">
-            <li>
-              <Link to="/about">Sobre nosotros</Link>
-            </li>
-            <li>
-              <Link to="/policies">Políticas</Link>
-            </li>
-            <li>
-              <Link to="/gallery">Galería</Link>
-            </li>
-            <li>
-              <Link to="/contact">Contacto</Link>
-            </li>
-          </ul>
-        </div>
-      </nav>
+    <Layout hideFooter={false} disappearingFooter>
       <div className="contact-page">
         <h2>Contacto</h2>
         <br />
@@ -56,23 +33,25 @@ const Contact = () => {
           </a>
         </div>
         {Contacto.map(contact => (
-          <p key={contact.idContact}>{contact.correo}</p>
+          <div key={contact.idContact}>
+            <p>{contact.correo}</p>
+            <p><img src='./ecFlag.png' alt="Ecuador Flag" /> {contact.numero}</p>
+          </div>
         ))}
-        {Contacto.map(contact => (
-          <p key={contact.idContact}><img src='./ecFlag.png' alt="Ecuador Flag" /> {contact.numero}</p>
-        ))}
-      </div>
-      <footer className="footerContact">
-        <h4>Soporte</h4>
-        <p>Developed by Aurora.SAS &clubs;</p>
-        <div className='dosColumnas'>
-          <p>soporte@aurora.com</p>
-          <p>+593 999567465</p>
+        <div className="support-info">
+          <h4>Soporte</h4>
+          <p>Developed by Aurora.SAS &clubs;</p>
+          <div className='dosColumnas'>
+            <p>soporte@aurora.com</p>
+            <p>+593 999567465</p>
+          </div>
         </div>
-      </footer>
-    </div>
+        <div className='admin-link'>
+          <Link to="/LoginAdmin">Staff</Link>
+        </div>
+      </div>
+    </Layout>
   );
 }
 
 export default Contact;
-

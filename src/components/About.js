@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import './styles/About.css';
 import Layout from './Layout';
 
@@ -21,18 +20,20 @@ const About = () => {
   useEffect(() => {
     fetchAboutData();
   }, []);
+
   return (
-    <div className="about-page">
-      <Layout>
+    <Layout>
+      <div className="about-page">
         <h2>Sobre Nosotros</h2>
-      <div className="about-content">
-        {about.map((item) => (
-          <p key={item.id}>{item.body}</p>
-        ))}
+        <div className="about-content">
+          {about.map((item) => (
+            <p key={item.id}>{item.body}</p>
+          ))}
+        </div>
       </div>
-      </Layout>        
-    </div>
+    </Layout>
   );
 };
 
 export default About;
+

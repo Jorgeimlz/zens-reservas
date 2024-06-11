@@ -9,7 +9,7 @@ const MainPage = () => {
       <video autoPlay loop muted className='background-video'>
         <source src="/zenspro.mp4" type="video/mp4" />
       </video>
-      <Layout>
+      <Layout transparentFooter>
         <div className="feel-the-sense">
           <h2>SLOGAN EMPRESA</h2>
           <Link to="/reservar">
@@ -17,9 +17,6 @@ const MainPage = () => {
           </Link>
         </div>
       </Layout>
-      <div className='admin-link'>
-        <Link to="/LoginAdmin">Staff</Link>
-      </div>
     </div>
   );
 };

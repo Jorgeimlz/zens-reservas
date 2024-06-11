@@ -24,7 +24,7 @@ const Gallery = () => {
   }, []);
 
   return (
-    <Layout>
+    <Layout disappearingFooter>
       <div className="gallery-page">
         <h2>Galería</h2>
         <div className="gallery-grid">

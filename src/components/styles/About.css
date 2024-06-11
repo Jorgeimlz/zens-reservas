@@ -1,16 +1,36 @@
 /* src/components/styles/About.css */
 .about-page {
   margin-top: 5%;
-    text-align: center;
-    padding: 50px;
-  }
-  
+  text-align: center;
+  padding: 50px;
+}
+
+.about-page h2 {
+  font-size: 48px;
+}
+
+.about-page p {
+  font-size: 18px;
+  margin-top: 2%;
+}
+
+@media (max-width: 768px) {
   .about-page h2 {
-    font-size: 48px;
+    font-size: 40px;
   }
-  
+
   .about-page p {
-    font-size: 18px;
-    margin-top: 2%;
+    font-size: 16px;
   }
-  
+}
+
+@media (max-width: 480px) {
+  .about-page h2 {
+    font-size: 36px;
+  }
+
+  .about-page p {
+    font-size: 14px;
+  }
+}
+
