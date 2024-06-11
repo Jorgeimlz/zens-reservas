@@ -3,8 +3,10 @@ import { useParams, useHistory } from 'react-router-dom';
 import Layout from './Layout';
 import './styles/Login.css';
 import { generarVoucher } from './actions/veriCredenciales';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
+const MySwal = withReactContent(Swal);
 
 const Login = () => {
   const { idFiesta } = useParams();
@@ -19,7 +21,6 @@ const Login = () => {
   const history = useHistory(); 
 
   useEffect(() => {
-    //OBTENER FECHA DE LA FIESTA
     const getFechat = async () => {
       try {
         const idF = parseInt(idFiesta, 10);
@@ -35,7 +36,7 @@ const Login = () => {
         console.error('Error al obtener la fecha de la fiesta:', error);
       }
     };
-    //OBTENER LAS RESERVAS EN ESA FIESTA HECHA PARA VERIFICAR AFORO
+
     const getReservas = async () => {
       try {
         const id = parseInt(idFiesta, 10);
@@ -66,10 +67,19 @@ const Login = () => {
 
   const postAPI = async (e) => {
     e.preventDefault();
-    //aforo, cambiar solo 15 x aforo limite deseado
     const limiteAforo = 20;
     if (aforo + parseInt(numeroPersonas, 10) > limiteAforo) {
-      toast.error('No hay suficiente aforo disponible para esta reserva.', { position: "top-center" });
+      MySwal.fire({
+        title: 'Error',
+        text: 'No hay suficiente aforo disponible para esta reserva.',
+        icon: 'error',
+        confirmButtonText: 'OK',
+        customClass: {
+          popup: 'swal-popup',
+          title: 'swal-title',
+          confirmButton: 'swal-button',
+        },
+      });
       return;
     }
 
@@ -78,13 +88,22 @@ const Login = () => {
     const fechaFiestaSinHora = new Date(new Date(fechaFiesta).setHours(0, 0, 0, 0));
     console.log(fechaActualSinHora); // Ver en consola hora actual
     console.log(fechaFiestaSinHora); // Ver en consola hora de fiesta
-    // Control de fechas
+
     if (fechaFiestaSinHora < fechaActualSinHora) {
-      toast.error('No puedes reservar para una fiesta pasada.', { position: "top-center" });
+      MySwal.fire({
+        title: 'Error',
+        text: 'No puedes reservar para una fiesta pasada.',
+        icon: 'error',
+        confirmButtonText: 'OK',
+        customClass: {
+          popup: 'swal-popup',
+          title: 'swal-title',
+          confirmButton: 'swal-button',
+        },
+      });
       return;
     }
 
-    // Generar el voucher en el momento de la reserva
     const voucherG = generarVoucher();
 
     const reserva = {
@@ -97,8 +116,7 @@ const Login = () => {
       hora: hora,
       telefono: telefono,
     };
-    
-    //HACER POST DE LA RESERVA
+
     try {
       const respuesta = await fetch('/api/Reservas', {
         method: 'POST',
@@ -113,12 +131,32 @@ const Login = () => {
         throw new Error(`Network response was not ok: ${errorText}`);
       }
       const resultado = await respuesta.json();
-      toast.success("TU VOUCHER DE RESERVA ES: " + voucherG, { position: "top-center" });
+      MySwal.fire({
+        title: 'Reserva Exitosa',
+        text: `TU VOUCHER DE RESERVA ES: ${voucherG}`,
+        icon: 'success',
+        confirmButtonText: 'OK',
+        customClass: {
+          popup: 'swal-popup',
+          title: 'swal-title',
+          confirmButton: 'swal-button',
+        },
+      });
       limpiarCampos();
       setAforo(prevTotal => prevTotal + parseInt(numeroPersonas, 10));
       setReservas(prevReservas => Array.isArray(prevReservas) ? [...prevReservas, reserva] : [reserva]);
     } catch (error) {
-      toast.error('Error al realizar la reserva: ' + error.message, { position: "top-center" });
+      MySwal.fire({
+        title: 'Error',
+        text: 'Error al realizar la reserva: ' + error.message,
+        icon: 'error',
+        confirmButtonText: 'OK',
+        customClass: {
+          popup: 'swal-popup',
+          title: 'swal-title',
+          confirmButton: 'swal-button',
+        },
+      });
     }
   };
 
@@ -161,7 +199,6 @@ const Login = () => {
           <button type="submit" className='reservar-button'>Reservar</button>
           </form>
       </div>
-      <ToastContainer />
     </Layout>
   );
 };

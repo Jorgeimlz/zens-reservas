@@ -1,6 +1,6 @@
 /* src/components/styles/Login.css */
 .login-page {
-  margin-top: 3%;
+  margin-top: 0%;
   text-align: center;
   margin-bottom: 2px;
 }
@@ -9,12 +9,12 @@
   border: 1px solid purple;
   background-color: transparent;
   color: white;
-  font-size: 3px;
-  padding: 1px 2px;
+  font-size: 14px; /* Aumentar el tamaño de la fuente para mejor visibilidad */
+  padding: 10px 20px; /* Aumentar el padding para mejor área de clic */
   cursor: pointer;
   transition: all 0.3s ease;
-  border-radius: 3px;
-  margin-top: 2px;
+  border-radius: 5px;
+  margin-top: 10px; /* Aumentar el margen superior */
 }
 
 .reservar-button:hover {
@@ -25,7 +25,7 @@
 .genReserva {
   display: flex;
   justify-content: center;
-  align-items: center;  /* Alinea verticalmente al centro */
+  align-items: center;  /* Alinear verticalmente al centro */
   padding: 20px; /* Añadir padding para evitar solapamientos */
 }
 
@@ -33,24 +33,24 @@
   width: 80%; /* Ancho del formulario */
   display: grid;
   grid-template-rows: auto auto;
-  gap: 2px; /* Reducir el espacio entre filas */
+  gap: 20px; /* Aumentar el espacio entre filas */
 }
 
 .genReserva-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px; /* Reducir el espacio entre columnas */
+  gap: 20px; /* Aumentar el espacio entre columnas */
 }
 
 .column p {
-  margin: 5px 0 0; /* Reducir el espacio entre párrafos */
+  margin: 10px 0 5px; /* Ajustar el espacio entre párrafos */
 }
 
 .column input,
 .column select {
   width: 100%;
-  padding: 2px;
-  margin-bottom: 2px;
+  padding: 10px; /* Aumentar el padding */
+  margin-bottom: 10px; /* Aumentar el margen inferior */
   box-sizing: border-box;
   background-color: #000000; /* Fondo oscuro para los inputs */
   border: 1px solid #4d0b59; 
@@ -83,4 +83,36 @@
     margin-top: 60px; /* Añadir espacio para evitar solapamiento con el nav */
     margin-bottom: 60px; /* Añadir espacio para evitar solapamiento con el footer */
   }
+}
+
+/* Custom styles for react-toastify */
+.Toastify__toast-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%; /* Ajustar el ancho */
+  max-width: 500px; /* Ancho máximo */
+  text-align: center; /* Centrar el texto */
+  z-index: 9999; /* Asegurar que se superponga correctamente */
+}
+
+.Toastify__toast {
+  margin-bottom: 10px; /* Separar los toasts */
+  border-radius: 8px; /* Añadir esquinas redondeadas */
+}
+
+.Toastify__toast--error {
+  background: #f8d7da; /* Fondo rojo claro */
+  color: #721c24; /* Texto rojo oscuro */
+}
+
+.Toastify__toast--success {
+  background: #d4edda; /* Fondo verde claro */
+  color: #155724; /* Texto verde oscuro */
+}
+
+.Toastify__toast--info {
+  background: #d1ecf1; /* Fondo azul claro */
+  color: #0c5460; /* Texto azul oscuro */
 }
