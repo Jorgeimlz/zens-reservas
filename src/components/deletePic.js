@@ -3,6 +3,7 @@ import './styles/deletePic.css';
 
 const DeletePic = () => {
   const [images, setImages] = useState([]);
+  const isMobileDevice = window.innerWidth <= 768; // Define el ancho máximo para considerar dispositivos móviles
 
   // Mostrar todas las fotos
   const apiGaleriaget = async () => {
@@ -42,7 +43,7 @@ const DeletePic = () => {
 
   // Confirmación de eliminación
   const handleDeleteClick = (id) => {
-    if (window.confirm('¿Estás seguro de que deseas eliminar esta imagen?')) {
+    if (!isMobileDevice || window.confirm('¿Estás seguro de que deseas eliminar esta imagen?')) {
       deleteFoto(id);
     }
   };
@@ -50,6 +51,7 @@ const DeletePic = () => {
   return (
     <div className="deletePage">
       <h2>Galería</h2>
+      <p>Da click en la imagen que deseas eliminar!</p>
       <div className="deleteGrid">
         {images.map((image) => (
           <div key={image.id} className="deleteItem">
@@ -57,8 +59,11 @@ const DeletePic = () => {
               src={`data:${image.mime};base64,${image.urLimg}`}
               alt={image.nombreArchivo}
               onError={(e) => e.target.src = 'default-image-url.jpg'}
+              onClick={() => handleDeleteClick(image.id)}
             />
-            <button className="deleteButton" onClick={() => handleDeleteClick(image.id)}>X</button>
+            {!isMobileDevice && (
+              <button className="deleteButton" onClick={() => handleDeleteClick(image.id)}>X</button>
+            )}
           </div>
         ))}
       </div>
@@ -67,3 +72,4 @@ const DeletePic = () => {
 }
 
 export default DeletePic;
+

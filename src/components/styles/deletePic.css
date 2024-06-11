@@ -11,6 +11,10 @@
     margin-bottom: 20px;
     text-align: center;
   }
+  .deletePage p{
+    align-items: center;
+    text-align: center;
+  }
   
   .deleteGrid {
     display: grid;
