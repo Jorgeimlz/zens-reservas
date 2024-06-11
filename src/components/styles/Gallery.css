@@ -1,12 +1,12 @@
 /* src/components/styles/Gallery.css */
 .gallery-page {
-  padding: 20px;
+  margin:1%;
   min-height: 100vh; /* Ensure the gallery page takes up at least the full viewport height */
   box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 .gallery-page h2 {
-  margin-top: 5%;
+  margin-top: 0%;
   font-size: 2em;
   margin-bottom: 20px;
   text-align: center;
@@ -34,10 +34,11 @@
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
   .gallery-page {
-    padding: 10px;
+    margin:1%;
   }
 
   .gallery-page h2 {
+    margin-top: 0%;
     font-size: 1.5em;
   }
 
@@ -52,6 +53,7 @@
 
 @media (max-width: 480px) {
   .gallery-page h2 {
+    margin-top:1%;
     font-size: 1.2em;
   }
 

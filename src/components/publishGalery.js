@@ -1,7 +1,14 @@
 import React from "react";
 import '../components/styles/publishGalery.css';
+import { irdeletePic } from "./actions/redirigirFiesta";
+import { useHistory } from 'react-router-dom';
 
 const PublishGalery = () => {
+
+    const history = useHistory();
+    const handleDelete = () => {
+        irdeletePic(history);
+    };
 
     const handleFileChange = async (event) => {
         const file = event.target.files[0];
@@ -62,6 +69,7 @@ const PublishGalery = () => {
                 accept="image/*"
                 onChange={handleFileChange}
             />
+            <button className="reservar-button" onClick={handleDelete}> Eliminar fotos </button>
         </div>
     );
 };

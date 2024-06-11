@@ -1,0 +1,91 @@
+/* src/components/styles/Gallery.css */
+.deletePage {
+    margin: 1%;
+    min-height: 100vh; /* Asegura que la página de la galería ocupe al menos la altura completa de la ventana gráfica */
+    box-sizing: border-box; /* Incluye el relleno y el borde en el ancho y alto total del elemento */
+  }
+  
+  .deletePage h2 {
+    margin-top: 2%;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .deleteGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .deleteItem {
+    position: relative; /* Requerido para posicionar el botón de eliminación sobre la imagen */
+    overflow: hidden;
+    max-width: 100%;
+  }
+  
+  .deleteItem img {
+    width: 100%;
+    height: 200px; /* Establece una altura fija para las imágenes */
+    object-fit: cover; /* Escala y recorta las imágenes para llenar el contenedor */
+    display: block;
+    transition: filter 0.3s; /* Suaviza la transición del filtro */
+  }
+  
+  .deleteItem:hover img {
+    filter: grayscale(100%); /* Aplica un filtro de escala de grises al pasar el cursor */
+  }
+  
+  .deleteButton {
+    position: absolute; /* Posiciona el botón de eliminación absolutamente en relación a .deleteItem */
+    top: 50%; /* Centra verticalmente */
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta la posición para estar en el centro */
+    background-color: rgba(255, 0, 0, 0.7); /* Rojo semi-transparente */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 40px; /* Centra el texto verticalmente */
+    opacity: 0;
+    transition: opacity 0.3s; /* Transición suave para la opacidad */
+    cursor: pointer;
+  }
+  
+  .deleteItem:hover .deleteButton {
+    opacity: 1; /* Muestra el botón al pasar el cursor */
+  }
+  
+  /* Media Queries para la Responsividad */
+  @media (max-width: 768px) {
+    .deletePage {
+      padding: 10px;
+    }
+  
+    .deletePage h2 {
+      font-size: 1.5em;
+    }
+  
+    .deleteGrid {
+      gap: 5px;
+    }
+  
+    .deleteItem img {
+      height: 150px; /* Ajusta la altura de las imágenes para pantallas más pequeñas */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .deletePage h2 {
+      font-size: 1.2em;
+    }
+  
+    .deleteItem img {
+      height: 100px;
+    }
+  }
+  

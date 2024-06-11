@@ -17,6 +17,7 @@ import seguridadPage from './components/seguridadPage';
 import publishAbout from './components/publishAbout';
 import publishPolitics from './components/publishPolitics';
 import publishContact from './components/publishContact';
+import deletePic from './components/deletePic';
 import { PrivateRoute } from './components/PrivaterRoute';
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <PrivateRoute path="/publishAbout" exact component={publishAbout} />
           <PrivateRoute path="/publishPolitics" exact component={publishPolitics} />
           <PrivateRoute path="/publishContact" exact component={publishContact} />
+          <PrivateRoute path="/deletePic" exact component={deletePic} />
         </Switch>
       </div>
     </Router>

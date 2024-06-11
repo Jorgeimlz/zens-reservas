@@ -33,3 +33,10 @@ export function irPublishParty (history){
       state: { logged: true }
     });
   }
+   
+  export function irdeletePic(history){
+    history.push({
+      pathname: '/deletePic',
+      state: { logged: true }
+    });
+  }

@@ -32,7 +32,7 @@ const AdminPage = () => {
         <div className="links">
                     <button className="reserbutton" onClick={handleReserva}>Ver reservas</button>
                     <button className="reserbutton" onClick={handlePfiesta}>Publicar fiestas</button>
-                    <button className="reserbutton" onClick={handleGalery} >Publicar en galeria</button>
+                    <button className="reserbutton" onClick={handleGalery} >Galeria</button>
                     <button className="reserbutton" onClick={handleAbout} >Publicar en About</button>
                     <button className="reserbutton" onClick={handlePoli} >Publicar nuevas Politicas</button>
                     <button className="reserbutton" onClick={handleContact} >Actualizar info de contacto</button>
