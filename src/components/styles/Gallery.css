@@ -22,6 +22,11 @@
 .gallery-item {
   overflow: hidden;
   max-width: 100%;
+  transition: filter 0.3s ease; /* Agrega una transición para suavizar el efecto de desenfoque */
+}
+
+.gallery-item:hover {
+  filter: blur(2px); /* Aplica el desenfoque al pasar el cursor sobre la imagen */
 }
 
 .gallery-item img {

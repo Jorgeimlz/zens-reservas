@@ -6,7 +6,7 @@ import Layout from './Layout';
 const MainPage = () => {
   return (
     <div className="main-page">
-      <video autoPlay loop muted className='background-video'>
+      <video autoPlay loop muted playsInline className='background-video'>
         <source src="/zenspro.mp4" type="video/mp4" />
       </video>
       <Layout transparentFooter>

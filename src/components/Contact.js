@@ -45,10 +45,11 @@ const Contact = () => {
             <p>soporte@aurora.com</p>
             <p>+593 999567465</p>
           </div>
-        </div>
-        <div className='admin-link'>
+          <div className='admin-link'>
           <Link to="/LoginAdmin">Staff</Link>
         </div>
+        </div>
+        
       </div>
     </Layout>
   );
