@@ -45,6 +45,14 @@ const SeguridadPage = () => {
             setError(error.message);
         }
     };
+    const verFiesta = async (idFiesta) =>{
+        const url = await fetch(`/api/Reservas/${idFiesta}`);
+        try {
+            
+        } catch (error) {
+            
+        }
+    }
 
     const handleInputChange = (e) => {
         setVoucher(e.target.value);

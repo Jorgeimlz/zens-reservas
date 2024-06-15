@@ -9,12 +9,12 @@
   border: 1px solid purple;
   background-color: transparent;
   color: white;
-  font-size: 14px; /* Aumentar el tamaño de la fuente para mejor visibilidad */
-  padding: 10px 20px; /* Aumentar el padding para mejor área de clic */
+  font-size: 12px; /* Reducir el tamaño de la fuente */
+  padding: 8px 16px; /* Reducir el padding */
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 5px;
-  margin-top: 10px; /* Aumentar el margen superior */
+  margin-top: 5px; /* Reducir el margen superior */
 }
 
 .reservar-button:hover {
@@ -30,7 +30,7 @@
 }
 
 .genReserva form {
-  width: 80%; /* Ancho del formulario */
+  width: 60%; /* Reducir el ancho del formulario */
   display: grid;
   grid-template-rows: auto auto;
   gap: 20px; /* Aumentar el espacio entre filas */
@@ -64,9 +64,15 @@
 }
 
 /* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+  .genReserva form {
+    width: 70%; /* Ajustar el ancho del formulario en pantallas medianas */
+  }
+}
+
 @media (max-width: 768px) {
   .genReserva form {
-    width: 90%; /* Reducir el ancho del formulario en dispositivos más pequeños */
+    width: 90%; /* Ajustar el ancho del formulario en dispositivos más pequeños */
   }
   
   .genReserva-grid {
