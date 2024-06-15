@@ -14,7 +14,7 @@ const ImageViewer = ({ images, onClose, currentIndex, onPrevious, onNext }) => {
 
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = `data:${images[currentIndex].mime};base64,${images[currentIndex].urLimg}`;
+    link.href = `data:${images[currentIndex].MIME};base64,${images[currentIndex].URLimg}`;
     link.download = images[currentIndex].nombreArchivo;
     document.body.appendChild(link);
     link.click();
@@ -50,7 +50,7 @@ const ImageViewer = ({ images, onClose, currentIndex, onPrevious, onNext }) => {
       <div className="image-viewer" onClick={(e) => e.stopPropagation()}>
         <div className="image-container">
           <img
-            src={`data:${images[currentIndex].mime};base64,${images[currentIndex].urLimg}`}
+            src={`data:${images[currentIndex].MIME};base64,${images[currentIndex].URLimg}`}
             alt={images[currentIndex].nombreArchivo}
             style={{ maxWidth: '50vw', maxHeight: '50vh', display: 'block', margin: '0 auto' }}
           />

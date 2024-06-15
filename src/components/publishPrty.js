@@ -2,19 +2,26 @@ import React, { useState } from "react";
 import './styles/publishParty.css';
 
 const PublishParty = () => {
-    const [nombreFiesta, setNombreFiesta] = useState("");
-    const [descripcion, setDescripcion] = useState("");
-    const [numeroDia, setNumeroDia] = useState("");
-    const [dia, setDia] = useState("THU");
-    const [date, setDate] = useState();
+    const initialState = {
+        nombreFiesta: "",
+        descripcion: "",
+        numerodia: "",
+        dia: "THU",
+        date: ""
+    };
+
+    const [nombreFiesta, setNombreFiesta] = useState(initialState.nombreFiesta);
+    const [descripcion, setDescripcion] = useState(initialState.descripcion);
+    const [numerodia, setNumerodia] = useState(initialState.numerodia);
+    const [dia, setDia] = useState(initialState.dia);
+    const [date, setDate] = useState(initialState.date);
 
     const handleSubmit = async () => {
-        const url = '/api/Fiestas';
+        const url = '/api/fiestas/';
         const fiestaData = {
-            idFiesta: 0,
-            numeroDia: numeroDia,
-            dia: dia, 
-            nombreFiesta: nombreFiesta, 
+            numerodia: numerodia,
+            dia: dia,
+            nombreFiesta: nombreFiesta,
             descripcion: descripcion,
             fecha: date
         };
@@ -29,10 +36,14 @@ const PublishParty = () => {
             });
             
             if (response.ok) {
-                // Manejo de la respuesta exitosa
                 alert('Fiesta publicada exitosamente');
+                // Reiniciar los estados a sus valores iniciales
+                setNombreFiesta(initialState.nombreFiesta);
+                setDescripcion(initialState.descripcion);
+                setNumerodia(initialState.numerodia);
+                setDia(initialState.dia);
+                setDate(initialState.date);
             } else {
-                // Manejo de errores
                 alert('Error al publicar la fiesta');
             }
         } catch (error) {
@@ -73,8 +84,8 @@ const PublishParty = () => {
                 <input 
                     type="text" 
                     placeholder="Número del día" 
-                    value={numeroDia} 
-                    onChange={(e) => setNumeroDia(e.target.value)} 
+                    value={numerodia} 
+                    onChange={(e) => setNumerodia(e.target.value)} 
                 />
                 <label>Ingrese la fecha de la fiesta</label>
                 <input 

@@ -11,7 +11,6 @@ const PublishPolitics = () => {
     const handlePublish = async () => {
         const url = '/api/politicas';
         const data = {
-            idPolitica: 0,
             politica: politica // Corregido el nombre de la variable
         };
 

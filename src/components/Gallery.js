@@ -9,7 +9,7 @@ const Gallery = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   const apiGaleriaget = async () => {
-    const url = '/api/galeria';
+    const url = '/api/galeria/';
     try {
       const response = await fetch(url);
       if (!response.ok) {
@@ -51,7 +51,7 @@ const Gallery = () => {
           {images.map((image, index) => (
             <div key={image.id} className="gallery-item" onClick={() => openImageViewer(index)}>
               <img
-                src={`data:${image.mime};base64,${image.urLimg}`}
+                src={`data:${image.MIME};base64,${image.URLimg}`}
                 alt={image.nombreArchivo}
                 onError={(e) => e.target.src = 'default-image-url.jpg'}
               />

@@ -1,15 +1,33 @@
 import '../components/styles/seguridadPage.css';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const SeguridadPage = () => {
     const [voucher, setVoucher] = useState("");
     const [resultado, setResultado] = useState(null);
     const [error, setError] = useState(null);
+    const [fiestas, setFiestas] = useState([]);
     const [reservas, setReservas] = useState([]);
+
+    useEffect(() => {
+        loadFiestas();
+    }, []);
+
+    const loadFiestas = async () => {
+        try {
+            const response = await fetch(`/api/fiestas`);
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status}`);
+            }
+            const data = await response.json();
+            setFiestas(data);
+        } catch (error) {
+            setError(error.message);
+        }
+    };
 
     const verificarReserva = async () => {
         try {
-            const response = await fetch(`/api/Reservas`);
+            const response = await fetch(`/api/reservas`);
             if (!response.ok) {
                 throw new Error(`Error: ${response.status}`);
             }
@@ -21,6 +39,13 @@ const SeguridadPage = () => {
             if (!reservaEncontrada) {
                 throw new Error("No existe reserva con este voucher");
             }
+
+            const fiestaEncontrada = fiestas.find(fiesta => fiesta.idFiesta === reservaEncontrada.idFiesta);
+            if (!fiestaEncontrada) {
+                throw new Error("No se encontró la fiesta correspondiente a la reserva");
+            }
+
+            reservaEncontrada.nombreFiesta = fiestaEncontrada.nombreFiesta; // Añadir nombre de la fiesta a la reserva encontrada
 
             setResultado(reservaEncontrada);
             setError(null);
@@ -35,7 +60,7 @@ const SeguridadPage = () => {
 
     const deleteReserva = async (id) => {
         try {
-            const response = await fetch(`/api/Reservas/${id}`, {
+            const response = await fetch(`/api/reservas/${id}`, {
                 method: 'DELETE',
             });
             if (!response.ok) {
@@ -45,20 +70,17 @@ const SeguridadPage = () => {
             setError(error.message);
         }
     };
-    const verFiesta = async (idFiesta) =>{
-        const url = await fetch(`/api/Reservas/${idFiesta}`);
-        try {
-            
-        } catch (error) {
-            
-        }
-    }
 
     const handleInputChange = (e) => {
         setVoucher(e.target.value);
     };
 
-    const camposMostrar = ['nombreReserva', 'apellidoReserva', 'numeroPersonas', 'hora', 'telefono'];
+    const camposMostrar = [
+        { label: 'Nombre', key: 'nombreReserva', transform: (resultado) => `${resultado.nombreReserva} ${resultado.apellidoReserva}` },
+        { label: 'Hora', key: 'hora' },
+        { label: 'Número Personas', key: 'numeroPersonas' },
+        { label: 'Teléfono', key: 'telefono' }
+    ];
 
     return (
         <div className="pageSeguridad">
@@ -75,11 +97,14 @@ const SeguridadPage = () => {
             {resultado && (
                 <div className="resultado">
                     <h2 style={{ color: 'green' }}>APROBADO</h2>
-                    {camposMostrar.map(key => (
-                        resultado[key] && (
-                            <div key={key} className="resultado-item">
-                                <label>{key}: </label>
-                                <span>{resultado[key]}</span>
+                    {resultado.nombreFiesta && (
+                        <p>{resultado.nombreFiesta} &#127881;</p>
+                    )}
+                    {camposMostrar.map((item, index) => (
+                        resultado[item.key] && (
+                            <div key={index} className="resultado-item">
+                                <label>{item.label}: </label>
+                                <span>{item.transform ? item.transform(resultado) : resultado[item.key]}</span>
                             </div>
                         )
                     ))}
@@ -87,7 +112,7 @@ const SeguridadPage = () => {
             )}
             {error && (
                 <div className='resultado'>
-                    <h2 style={{ color: 'red' }}>NO EXISTE RESERVA O YA FUE USADA</h2>
+                    <h2 style={{ color: 'red' }}>ERROR</h2>
                     <p>{error}</p>
                 </div>
             )}

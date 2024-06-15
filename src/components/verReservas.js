@@ -11,7 +11,7 @@ const VerReservas = () => {
   useEffect(() => {
     const apiFiestas = async () => {
       try {
-        const urlF = '/api/Fiestas';
+        const urlF = '/api/fiestas';
         const respuesta = await fetch(urlF);
         if (!respuesta.ok) {
           throw new Error('Network response was not ok');
@@ -30,7 +30,7 @@ const VerReservas = () => {
 
   const consultaAPI = async () => {
     try {
-      const url = '/api/Reservas'; // URL relativa
+      const url = '/api/reservas'; // URL relativa
       const respuesta = await fetch(url);
       if (!respuesta.ok) {
         throw new Error('Network response was not ok');

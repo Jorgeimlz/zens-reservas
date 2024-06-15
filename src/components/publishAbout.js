@@ -11,7 +11,6 @@ const PublishAbout = () => {
     const handlePublish = async () => {
         const url = '/api/about';
         const data = {
-            id: 0, // Ajusta el ID según tus necesidades
             body: description
         };
 

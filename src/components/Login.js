@@ -24,7 +24,7 @@ const Login = () => {
     const getFechat = async () => {
       try {
         const idF = parseInt(idFiesta, 10);
-        const url = `/api/Fiestas/${idF}`;
+        const url = `/api/fiestas/${idF}`;
         const respu = await fetch(url);
         if (!respu.ok) {
           throw new Error(`Error fetching data: ${respu.statusText}`);
@@ -40,7 +40,7 @@ const Login = () => {
     const getReservas = async () => {
       try {
         const id = parseInt(idFiesta, 10);
-        const url = await fetch(`/api/Reservas/GetAllIdFiesta/${id}`);
+        const url = await fetch(`/api/reservas/GetAllIdFiesta/${id}`);
         if (!url.ok) {
           throw new Error(`Error fetching data: ${url.statusText}`);
         }
@@ -67,7 +67,7 @@ const Login = () => {
 
   const postAPI = async (e) => {
     e.preventDefault();
-    const limiteAforo = 20;
+    const limiteAforo = 25;
     if (aforo + parseInt(numeroPersonas, 10) > limiteAforo) {
       MySwal.fire({
         title: 'Error',
@@ -107,7 +107,6 @@ const Login = () => {
     const voucherG = generarVoucher();
 
     const reserva = {
-      idReserva: 0,
       idFiesta: parseInt(idFiesta, 10),
       vaucher: voucherG,
       nombreReserva: nombre,
@@ -118,7 +117,7 @@ const Login = () => {
     };
 
     try {
-      const respuesta = await fetch('/api/Reservas', {
+      const respuesta = await fetch('/api/reservas', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

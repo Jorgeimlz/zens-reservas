@@ -9,7 +9,7 @@ const ReservasPage = () => {
   useEffect(() => {
     const consultaApi = async () => {
       try {
-        const url = '/api/Fiestas';
+        const url = '/api/fiestas';
         const respuesta = await fetch(url);
         if (!respuesta.ok) {
           throw new Error('Network response was not ok');

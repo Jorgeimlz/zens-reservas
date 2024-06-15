@@ -21,8 +21,8 @@ const DeletePic = () => {
   };
 
   // Eliminar foto
-  const deleteFoto = async (id) => {
-    const ruta = `/api/galeria/${id}`;
+  const deleteFoto = async (Id) => {
+    const ruta = `/api/galeria/${Id}`;
     try {
       const response = await fetch(ruta, {
         method: 'DELETE',
@@ -31,7 +31,7 @@ const DeletePic = () => {
         throw new Error('Network response was not ok');
       }
       // Elimina la imagen del estado local
-      setImages(images.filter((image) => image.id !== id));
+      setImages(images.filter((image) => image.Id !== Id));
     } catch (error) {
       console.error('Failed to delete image:', error);
     }
@@ -42,9 +42,9 @@ const DeletePic = () => {
   }, []);
 
   // Confirmación de eliminación
-  const handleDeleteClick = (id) => {
+  const handleDeleteClick = (Id) => {
     if (!isMobileDevice || window.confirm('¿Estás seguro de que deseas eliminar esta imagen?')) {
-      deleteFoto(id);
+      deleteFoto(Id);
     }
   };
 
@@ -56,13 +56,13 @@ const DeletePic = () => {
         {images.map((image) => (
           <div key={image.id} className="deleteItem">
             <img
-              src={`data:${image.mime};base64,${image.urLimg}`}
+              src={`data:${image.MIME};base64,${image.URLimg}`}
               alt={image.nombreArchivo}
               onError={(e) => e.target.src = 'default-image-url.jpg'}
-              onClick={() => handleDeleteClick(image.id)}
+              onClick={() => handleDeleteClick(image.Id)}
             />
             {!isMobileDevice && (
-              <button className="deleteButton" onClick={() => handleDeleteClick(image.id)}>X</button>
+              <button className="deleteButton" onClick={() => handleDeleteClick(image.Id)}>X</button>
             )}
           </div>
         ))}
